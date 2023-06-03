@@ -1,5 +1,6 @@
 package com.solar;
 
+import com.airbnb.android.react.lottie.LottiePackage;
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
