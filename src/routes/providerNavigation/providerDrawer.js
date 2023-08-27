@@ -3,8 +3,11 @@ import { RouteNames } from '@/constants';
 import IntroScreens from '@/containers/auth/introScreens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import VendorsHome from '@/containers/vendors/vendorsHome';
+import DrawerView from '@/components/drawerView';
+import { DrawerMenusProvider } from '@/utils/data';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,10 +21,10 @@ const ProviderDrawer = props => {
           drawerStyle: {width: Dimensions.get('screen').width / 1.3},
           drawerType: 'front',
         }}
-        drawerContent={props => <View style={{ backgroundColor: "red" }} />}>
+        drawerContent={()=>  <DrawerView data={DrawerMenusProvider} />}>
         <Drawer.Screen
           name="TopTabNavigator"
-          component={()=><View />}
+          component={VendorsHome}
         //   options={{
         //     title: '',
         //     drawerItemStyle: {display: 'none'},

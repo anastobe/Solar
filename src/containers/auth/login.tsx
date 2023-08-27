@@ -29,6 +29,7 @@ import SafeScrollView from '@/components/safeScrollView';
 import {general_style} from '@/assets/styles/generalStyle';
 import PasswordField from '@/components/passwordField';
 import {useNavigation} from '@react-navigation/native';
+
 // import {
 //   GoogleSignin,
 //   statusCodes,
@@ -42,7 +43,7 @@ import {useNavigation} from '@react-navigation/native';
 //   GraphRequestManager,
 //   GraphRequest,
 // } from 'react-native-fbsdk-next';
-// import {useDispatch, useSelector} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 // import {
 //   appleAuthData,
 //   fbAuthData,
@@ -50,17 +51,22 @@ import {useNavigation} from '@react-navigation/native';
 //   signupdata,
 // } from '@/redux/actions/userAction';
 import Loader from '@/components/loader';
+import axios from 'axios';
+import { LoginApi } from '@/Redux/Action/AuthActions/authActions';
+import ActionType from '@/Redux/Action/ActionType/actionType';
 
-export default function Login() {
+const Login = props => {
+
+
 //   const signupAsID = useSelector(state => state?.userReducer?.signupAsID);
 
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const [isChecked, setIsChecked] = useState(false);
   const [hide, setHide] = useState(true);
-  const [inputEmail, setInputEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [inputEmail, setInputEmail] = useState('anass@gmail.com');
+  const [password, setPassword] = useState('AsgL9751-');
   const [isInvalidEmail, setIsInvalidEmail] = useState('');
   const [isInvalidPassword, setIsInvalidPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -141,10 +147,7 @@ export default function Login() {
 //     }
 //   };
 
-  const nextButton = () => {
-
-    navigation.navigate(RouteNames.provBottomStack);
-    return
+  const nextButton =async () => {
 
     const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const regPassword =
@@ -172,30 +175,52 @@ export default function Login() {
       return;
     } else {
 
-    //   if (signupAsID == 1) {
-    //     navigation.reset({
-    //       index: 0,
-    //       routes: [{name: RouteNames.provBottomStack}],
-    //     });
-    //   } else {
-    //     navigation.reset({
-    //       index: 0,
-    //       routes: [{name: RouteNames.bottomStack}],
-    //     });
-    //   }
+      let data = {
+        email: inputEmail,
+        password: password,
+      };
+      
+      let response = await props.LoginApi(data);
 
-    //   let payload = {
-    //     firstName: 'Hunaiza',
-    //     age: '20',
-    //   };
-    //   dispatch(signupdata(payload));
+      console.log("----===login==> ",response);
+      
 
+      if (response?.data?.usertype == "provider") {
+        navigation.reset({
+          index: 0,
+          routes: [{name: RouteNames.providerBottomTabs}],
+        });
+        dispatch({type: ActionType.IS_LOGIN, payload: "provider"});
+      } else if (response?.data?.usertype == "user"){
+        navigation.reset({
+          index: 0,
+          routes: [{name: RouteNames.userBottomTabs}],
+        });
+        dispatch({type: ActionType.IS_LOGIN, payload: "user"});
+      }
+
+    Alert.alert("you loged in SAAB project")
+
+    return
       setInputEmail('');
       setPassword('');
   
   
     }
   };
+
+
+// Function to update an existing item using the second API endpoint
+// const updateExistingItem = async (id, data) => {
+//   try {
+//     const response = await axios.post(`${API_URL}/api/endpoint2/${id}`, data);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error updating existing item:', error);
+//     throw error;
+//   }
+// };
+
 
   const handleSetEmail = myEmail => {
     if (myEmail) {
@@ -228,7 +253,7 @@ export default function Login() {
           }}>
 
             <Image
-              source={require('@/assets/images/solarlogo.png')}
+              source={require('@/assets/images/solarlogo.jpeg')}
               style={{
                 width: 190,
                 resizeMode: 'contain',
@@ -415,3 +440,13 @@ export default function Login() {
     </View>
   );
 }
+
+
+
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = {
+  LoginApi: LoginApi,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

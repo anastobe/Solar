@@ -9,6 +9,9 @@ import Notification from '@/containers/generalScreens/notification';
 import Chat from '@/containers/generalScreens/chat';
 import Profile from '@/containers/generalScreens/profile';
 import ProviderDrawer from './providerDrawer';
+import Personlistscreen from '@/containers/generalScreens/chatScreens/personlistscreen';
+import AddJob from '@/containers/generalScreens/addJob/addJob';
+import AddJobProvider from '@/containers/vendors/addJobProvider';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,19 +25,11 @@ function HomeTab() {
   );
 }
 
-// function NotificationTab() {
-//   return (
-//     <Stack.Navigator screenOptions={{headerShown: false}}>
-//       <Stack.Screen name="Notification" component={Notification} />
-
-//     </Stack.Navigator>
-//   );
-// }
-
-function ExpenseTab() {
+function AddJobStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name={RouteNames.addJobProvider} component={AddJobProvider} />
+
 
     </Stack.Navigator>
   );
@@ -44,6 +39,16 @@ function ChatTab() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Chat" component={Chat} />
+
+    </Stack.Navigator>
+  );
+}
+
+function ChatTabStack() {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+
+      <Stack.Screen name='Chatflatlist' component={Personlistscreen} options={{ headerShown: false }} />
 
     </Stack.Navigator>
   );
@@ -80,21 +85,8 @@ const ProviderBottomTabs = () => {
             ),
           }}
       />
-      {/* <Tab.Screen name="NotificationTab" component={NotificationTab} 
-        options={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarIcon: ({focused}) => (
-            <BottomTab
-            txt={'Updates'}
-            img={"bell"}
-            focusImg={"bell"}
-            focus={focused}
-            />
-        ),
-        }}
-        /> */}
-      <Tab.Screen name="ExpenseTab" component={ExpenseTab} 
+  
+      <Tab.Screen name="ProviderAddJobStack" component={AddJobStack} 
         options={{
             headerShown: false,
             tabBarShowLabel: false,
@@ -108,7 +100,7 @@ const ProviderBottomTabs = () => {
             ),
           }} 
       />
-      <Tab.Screen name="ChatTab" component={ChatTab} 
+      <Tab.Screen name={RouteNames.chatTabStack} component={ChatTabStack} 
         options={{
             headerShown: false,
             tabBarShowLabel: false,

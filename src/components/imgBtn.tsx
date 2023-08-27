@@ -21,7 +21,6 @@ export default function ImgButton({
   marginHorizontal,
 }) {
 
-  console.log("children==>",children)
   
   return (
     <TouchableOpacity

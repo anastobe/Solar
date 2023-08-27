@@ -8,6 +8,8 @@ import Signup from '@/containers/auth/signup';
 import ForgotPassword from '@/containers/auth/forgotpassword';
 import PasswordVerification from '@/containers/auth/passVerification';
 import ResetPass from '@/containers/auth/resetPass';
+import ProviderBottomTabs from '../providerNavigation/providerBottomTabs';
+import UserBottomTabs from '../userNavigation/userBottomTabs';
 
 const AuthStack = () => {
 
@@ -16,6 +18,16 @@ const AuthStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+          name={RouteNames.login}
+          component={Login}
+          options={{headerShown: false}}
+      />
+      <Stack.Screen
+          name={RouteNames.signup}
+          component={Signup}
+          options={{headerShown: false}}
+      />
+      <Stack.Screen
         name={RouteNames.introScreens}
         component={IntroScreens}
         options={{headerShown: false}}
@@ -23,16 +35,6 @@ const AuthStack = () => {
     <Stack.Screen
         name={RouteNames.optionScreen}
         component={OptionScreen}
-        options={{headerShown: false}}
-    />
-    <Stack.Screen
-        name={RouteNames.login}
-        component={Login}
-        options={{headerShown: false}}
-    />
-    <Stack.Screen
-        name={RouteNames.signup}
-        component={Signup}
         options={{headerShown: false}}
     />
     <Stack.Screen
@@ -50,7 +52,17 @@ const AuthStack = () => {
       component={ResetPass}
       options={{headerShown: false}}
     />
-    
+    <Stack.Screen
+      name={RouteNames.providerBottomTabs}
+      component={ProviderBottomTabs}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name={RouteNames.userBottomTabs}
+      component={UserBottomTabs} 
+      options={{headerShown: false}}
+    />
+
     </Stack.Navigator>
   );
 };

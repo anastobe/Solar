@@ -5,10 +5,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Dimensions, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import UserHome from '@/containers/costumers/userHome';
+import DrawerView from '@/components/drawerView';
+import { DrawerMenusUser } from '@/utils/data';
 
 const Drawer = createDrawerNavigator();
 
 const UserDrawer = props => {
+
+  // userType
+  
     return (
       <Drawer.Navigator
         // initialRouteName="TopTabNavigator"
@@ -18,10 +24,10 @@ const UserDrawer = props => {
           drawerStyle: {width: Dimensions.get('screen').width / 1.3},
           drawerType: 'front',
         }}
-        drawerContent={props => <View style={{ backgroundColor: "red" }} />}>
+        drawerContent={()=><DrawerView  data={DrawerMenusUser}  />}>
         <Drawer.Screen
-          name="TopTabNavigator"
-          component={()=><View />}
+          name={RouteNames.userHome}
+          component={UserHome}
         //   options={{
         //     title: '',
         //     drawerItemStyle: {display: 'none'},

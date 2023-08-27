@@ -1,12 +1,23 @@
 import React from 'react';
-import { RouteNames } from '@/constants';
+import {RouteNames} from '@/constants';
 import IntroScreens from '@/containers/auth/introScreens';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // import UserBottomTabs from './userBottomTabs';
 import ProviderBottomTabs from './providerBottomTabs';
+import PaymentDone from '@/containers/costumers/paymentDone';
+import Chattinguser from '@/containers/generalScreens/chatScreens/chattinguser';
+import Sharelocation from '@/containers/generalScreens/chatScreens/sharelocation';
+import PdfView from '@/containers/generalScreens/chatScreens/pdfView';
+import ShowBigImage from '@/containers/generalScreens/chatScreens/showBigImage';
+import EditProfile from '@/containers/generalScreens/editProfile';
+import GetRequirements from '@/containers/generalScreens/addJob/getRequirements';
+import GetRequirementsDetail from '@/containers/generalScreens/addJob/getRequirementsDetail';
+import AvgEstimatePrice from '@/containers/generalScreens/addJob/avgEstimatePrice';
+import UserJobDetail from '@/containers/vendors/userJobDetail';
+import Notification from '@/containers/generalScreens/notification';
+import FamousVendors from '@/containers/generalScreens/famousVendors';
 
 const ProviderRoutes = () => {
-
   const Stack = createNativeStackNavigator();
 
   return (
@@ -18,6 +29,78 @@ const ProviderRoutes = () => {
         options={{headerShown: false}}
       />
 
+      <Stack.Screen
+        options={{headerShown: false}}
+        name={RouteNames.getRequirements}
+        component={GetRequirements}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name={RouteNames.getRequirementsDetail}
+        component={GetRequirementsDetail}
+      />
+
+      <Stack.Screen
+        options={{headerShown: false}}
+        name={RouteNames.avgEstimatePrice}
+        component={AvgEstimatePrice}
+      />
+
+      <Stack.Screen
+        name={RouteNames.paymentDone}
+        component={PaymentDone}
+        options={{headerShown: false}}
+      />
+
+      {/* add job  */}
+      <Stack.Screen
+        name="userJobDetail"
+        component={UserJobDetail}
+        options={{headerShown: false}}
+      />
+      
+
+      {/* chat module  */}
+      <Stack.Screen
+        name="Userchat"
+        component={Chattinguser}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Sharelocation"
+        component={Sharelocation}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="pdfView"
+        component={PdfView}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="showBigImage"
+        component={ShowBigImage}
+        options={{headerShown: false}}
+      />
+
+      {/* profile */}
+      <Stack.Screen
+        name={RouteNames.editProfile}
+        component={EditProfile}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name={RouteNames.notification}
+        component={Notification}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name={RouteNames.famousVendors}
+        component={FamousVendors}
+        options={{headerShown: false}}
+      />
+      
 
     </Stack.Navigator>
   );
@@ -25,24 +108,18 @@ const ProviderRoutes = () => {
 
 export default ProviderRoutes;
 
-
-
-
-
-
 // import { View, Text, Image } from 'react-native'
 // import React from 'react'
 // import { createNativeStackNavigator } from '@react-navigation/native-stack'
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// // screen 
+// // screen
 // import Home from '../screens/Client/Home'
 // import Notification from '../screens/Notification'
 // import New_request from '../screens/Client/New_request'
 // import Chat from '../screens/Chat'
 // import Profile from '../screens/Profile'
 // import EditProfile from '../screens/EditProfile'
-
 
 // import { colors } from '../theme';
 // import { images } from '../images';

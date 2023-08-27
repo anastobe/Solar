@@ -21,21 +21,7 @@ const BottomTab = ({...props}) => {
           alignItems: 'center',
           borderRadius: 10,
         }}>
-        {/* <Image
-          source={focus ? focusImg : img}
-          style={{
-            width: Metrics.width < 361 ? 21 : 24,
-            height: Metrics.width < 361 ? 21 : 24,
-          }}
-          resizeMode="contain"
-        /> */}
-
        <Octicons           
-          // style={{
-          //   width: Metrics.width < 361 ? 21 : 24,
-          //   height: Metrics.width < 361 ? 21 : 24,
-          //   top: 3
-          // }} 
           name={focus ? focusImg : img} size={17} 
           color={theme.white}
           />
@@ -56,11 +42,6 @@ const BottomTab = ({...props}) => {
     return (
       <View style={{marginTop: -5, height: 40, justifyContent: 'space-evenly'}}>
        <Octicons           
-          // style={{
-          //   width: Metrics.width < 361 ? 21 : 24,
-          //   height: Metrics.width < 361 ? 21 : 24,
-          //   top: 3
-          // }} 
           name={focus ? focusImg : img} size={17} 
           color="black" 
           />

@@ -6,6 +6,8 @@ const theme = {
     tealGreen: '#205C7E',
     lightblue: '#2790BF',
     darkgrey: '#6E7071',
+    purple: "#471c58",
+    greyC: "#cbcbcb"
 
 
   };

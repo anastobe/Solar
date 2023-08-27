@@ -26,29 +26,38 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/Button";
 // import ApplyBtn from "@/components/ApplyBtn";
 import Button from '@/components/button';
-import { FONT_FAMILY } from "@/constants/index";
+import { FONT_FAMILY, RouteNames } from "@/constants/index";
 import InputField from "@/components/inputField";
 import PasswordField from "@/components/passwordField";
 import theme from "@/assets/styles/theme";
 import ImgButton from "@/components/imgBtn";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
+import { useNavigation } from "@react-navigation/native";
+import { RegisterApi } from "@/Redux/Action/AuthActions/authActions";
+import { connect } from "react-redux";
 
-const Signup  = ({ navigation }) => {
+const Signup  = props => {
+
+    const navigation = useNavigation();
     const [isChecked, setIsChecked] = useState(false);
-    const [username, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUserName] = useState('anas');
+    const [email, setEmail] = useState('anas@gmail.com');
+    const [password, setPassword] = useState('AsgL9751-');
+    const [cnfrm_password, setcnfrm_Password] = useState('AsgL9751-');
     const [isInvalidUsername, setIsInvalidUsername] = useState('');
     const [isInvalidEmail, setIsInvalidEmail] = useState('');
-    const [isInvalidPassword, setIsInvalidPassword] = useState('');
+    const [isInvalidPassword, setIsInvalidPassword] = useState(false);
+    const [isInvalidCnfrmPassword, setIsInvalidCnfrmPassword] = useState('');
     const [hide, setHide] = useState(true);
+    const [hide2, setHide2] = useState(true);
+    const [load, setLoader] = useState(false);
 
-    const nextButton = () => {
+    const nextButton =async () => {
         const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/
 
-        if (username.length < 3 || username.length > 20) {
+        if (username.length < 3) {
             showMessage({
                 message: "Username must have atleast 3 character",
                 type: "default",
@@ -61,7 +70,7 @@ const Signup  = ({ navigation }) => {
         }
         else if (username === '') {
             showMessage({
-                message: "Please enter name",
+                message: "Please enter Username",
                 type: "default",
                 backgroundColor: "#0760F0",
                 color: "white",
@@ -115,14 +124,42 @@ const Signup  = ({ navigation }) => {
             setIsInvalidPassword(true)
             return
         }
-        else {
-            navigation.goBack()
-            setEmail('')
-            setUserName('')
-            setPassword('')
-            return
+        else if (password !== cnfrm_password) {
+          showMessage({
+              message: "Password And Confirm Password is not Same",
+              type: "default",
+              backgroundColor: "#0760F0",
+              color: "white",
+              statusBarHeight : StatusBar.currentHeight
+          });
+          return
+      }  
+        else {          
+            let data = {
+              name: username,
+              email: email,
+              password: password,
+              password_confirmation: cnfrm_password,
+              tc: true,
+              type: "provider"
+            };
+            
+            let response = await props.RegisterApi(data,navigation);
+     
+            if (response) {
+                setEmail('')
+                setUserName('')
+                setPassword('')
+                setcnfrm_Password('')
+                navigation.navigate(RouteNames.login);
+                setLoader(false);
+              } else {
+                setLoader(false);
+              }
+
         }
     }
+   
 
     const handleSetUsername = (inputName) => {
         setUserName(inputName) 
@@ -145,6 +182,14 @@ const Signup  = ({ navigation }) => {
         }
     }
 
+    const handleSetCnfrmPassword = (inputPwd) => {
+      setcnfrm_Password(inputPwd)
+      if (isInvalidCnfrmPassword) {
+        setIsInvalidCnfrmPassword(false)
+      }
+  }
+    
+
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <StatusBar />
@@ -160,7 +205,7 @@ const Signup  = ({ navigation }) => {
                 //   margTp={46}
                   heading="Name"
                   blurOnSubmit={false}
-                  placeholder="Enter your Name"
+                  placeholder="Enter Username"
                   value={username}
                   onChangeText={handleSetUsername}
                   invalid={isInvalidUsername}
@@ -197,31 +242,26 @@ const Signup  = ({ navigation }) => {
                 onPressImg={() => setHide(!hide)}
             />
 
+            <PasswordField
+              marginTp={12}
+              heading="Confirm Password"
+              value={cnfrm_password}
+              onChangeText={handleSetCnfrmPassword}
+              placeholder="Enter your Password"
+              image={
+              !hide2
+                  ? "eye"
+                  : "eye-closed"
+              }
+              isInvalidPassword={isInvalidCnfrmPassword}
+              secureEntry={hide}
+              tintColor={'#2E90BF'}
+              onPressImg={() => setHide2(!hide2)}
+            />
+
               <View style={{marginVertical: 13, marginTop: 20}}>
                 <Text style={styles.orButton}>or</Text>
               </View>
-
-              <ImgButton
-          marginTp={10}
-          marginHorizontal={40}
-          onPress={() => console.log("facebook")}
-          title="Continue with Facebook"
-          distance={0}
-          borderWidth={1}
-          borderColor={theme.lightblue}
-          bgcolor={theme.white}
-          txtColor={theme.darkgrey}
-          verticalDistance={17}
-          width={8}
-          height={14}
-          horizontalDistance={11}
-        >
-                    <FontAwesome
-            name="facebook"
-            size={15}
-            color={theme.black}
-          />
-        </ImgButton>
 
         <ImgButton
           marginTp={10}
@@ -331,4 +371,13 @@ const Signup  = ({ navigation }) => {
     );
 }
 
-export default Signup
+
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {
+  // SignUpApi: SignUpApi,
+  RegisterApi: RegisterApi,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

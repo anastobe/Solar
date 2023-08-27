@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Alert, Text,View} from 'react-native';
+import {Alert, Text, View} from 'react-native';
 // import {Provider} from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 // import {store} from './redux/store';
@@ -7,14 +7,18 @@ import {NavigationContainer} from '@react-navigation/native';
 import Routes from '@/routes/index';
 // import FlashMessage from 'react-native-flash-message';
 import {RouteNames} from './constants';
+import {Provider} from 'react-redux';
+import {Persistor, Store} from '@/Redux/Store/Store';
+import {PersistGate} from 'redux-persist/integration/react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FlashMessage from 'react-native-flash-message';
+import {Toast} from 'react-native-toast-message/lib/src/Toast';
 
 const App = () => {
   // const [handleNav, sethandleNav] = useState('');
 
   useEffect(() => {
-      SplashScreen.hide();
+    SplashScreen.hide();
     // redirect();
   }, []);
 
@@ -29,13 +33,17 @@ const App = () => {
   // }
 
   return (
-
     // <Provider store={store}>
-      <NavigationContainer>
-        <Routes handleNav={'true'} />
-        <FlashMessage position="top" />
-      </NavigationContainer>
-    // </Provider>
+
+    <Provider store={Store}>
+      <PersistGate loading={null} persistor={Persistor}>
+        <NavigationContainer>
+          <Routes handleNav={'true'} />
+          <FlashMessage position="top" />
+          <Toast />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 

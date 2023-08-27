@@ -31,7 +31,26 @@ export const RouteNames = {
     resetPass: 'resetPass',
     providerBottomTabs: 'providerBottomTabs',    
     userBottomTabs: 'userBottomTabs',
-    providerDrawer: 'providerDrawer'
-
+    userDrawer: 'userDrawer',
+    jobDetailAndPayment: 'jobDetailAndPayment',
+    userJobDetail: 'userJobDetail',
+    paymentDone: 'paymentDone',
+    providerDrawer: 'providerDrawer',
+    editProfile: 'editProfile',
+    profileTabStack: 'profileTabStack',
+    chatTabStack: 'chatTabStack',
+    addJobStack: 'addJobStack',
+    homeTabStack: 'homeTabStack',
+    addJob: 'addJob',
+    addJobProvider: 'addJobProvider',
+    addLoads: 'addLoads',
+    userHome: 'userHome',
+    getEstimatePrice: 'getEstimatePrice',
+    getRequirements: 'getRequirements',
+    getRequirementsDetail: 'getRequirementsDetail',
+    avgEstimatePrice: 'avgEstimatePrice',
+    notification: 'notification',
+    famousVendors: 'famousVendors',
+    calculateExpense: 'calculateExpense',
 
   };

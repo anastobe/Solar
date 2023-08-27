@@ -9,47 +9,71 @@ import BottomTab from '@/components/bottomTab';
 import Notification from '@/containers/generalScreens/notification';
 import Profile from '@/containers/generalScreens/profile';
 import Chat from '@/containers/generalScreens/chat';
+import Chattinguser from '@/containers/generalScreens/chatScreens/chattinguser';
+import ShowBigImage from '@/containers/generalScreens/chatScreens/showBigImage';
+import PdfView from '@/containers/generalScreens/chatScreens/pdfView';
+import Sharelocation from '@/containers/generalScreens/chatScreens/sharelocation';
+import Personlistscreen from '@/containers/generalScreens/chatScreens/personlistscreen';
+import EditProfile from '@/containers/generalScreens/editProfile';
+import AddJob from '@/containers/generalScreens/addJob/addJob';
+import AddLoads from '@/containers/generalScreens/addJob/addLoads';
+import GetEstimatePrice from '@/containers/generalScreens/addJob/getEstimatePrice';
+import GetRequirementsDetail from '@/containers/generalScreens/addJob/getRequirementsDetail';
+import JobDetailAndPayment from '@/containers/costumers/jobDetailAndPayment';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function HomeTab() {
+function homeTabStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="UserDrawer" component={UserDrawer} />
+      <Stack.Screen name={RouteNames.userDrawer} component={UserDrawer} />
 
     </Stack.Navigator>
   );
 }
 
-// function NotificationTab() {
-//   return (
-//     <Stack.Navigator screenOptions={{headerShown: false}}>
-//       <Stack.Screen name="Notification" component={Notification} />
-
-//     </Stack.Navigator>
-//   );
-// }
-
-function ExpenseTab() {
+function AddJobStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name={RouteNames.addJob} component={AddJob} />
+
+      <Stack.Screen options={{headerShown: false}} name={RouteNames.getRequirementsDetail} component={GetRequirementsDetail} />
+      <Stack.Screen name={RouteNames.addLoads} component={AddLoads} />
+      <Stack.Screen name={RouteNames.getEstimatePrice} component={GetEstimatePrice} />
+
 
     </Stack.Navigator>
   );
 }
 
-function ChatTab() {
+function ChatTabStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Chat" component={Chat} />
+
+      <Stack.Screen name='Chatflatlist' component={Personlistscreen} options={{ headerShown: false }} />
+
+        {/*        <Stack.Screen name='Contract' component={Contract} options={{ headerShown: false }} />
+            <Stack.Screen name='Contractsubmitted' component={Contractsubmitted} options={{ headerShown: false }} />
+            <Stack.Screen name='Newcardadd' component={Newcardadd} options={{ headerShown: false }} />
+            <Stack.Screen name='Reqeustreason' component={Reqeustreason} options={{ headerShown: false }} />
+            <Stack.Screen name='Userpayment' component={Userpayment} options={{ headerShown: false }} />
+            <Stack.Screen name='Sharelocation' component={Sharelocation} options={{ headerShown: false }} />
+            <Stack.Screen name='Homerunningcontact' component={Homerunningcontact} options={{ headerShown: false }} />
+            <Stack.Screen name='Influencerpaypal' component={Influencerpaypal} options={{ headerShown: false }} />
+            <Stack.Screen name='Joboffersent' component={Joboffersent} options={{ headerShown: false }} />
+            <Stack.Screen name='Messagebox' component={Messagebox} options={{ headerShown: false }} />
+            <Stack.Screen name='Refundsubmitted' component={Refundsubmitted} options={{ headerShown: false }} />
+            <Stack.Screen name='Paymentcard' component={Paymentcard} options={{ headerShown: false }} />
+            <Stack.Screen name='Influencerpay' component={Influencerpay} options={{ headerShown: false }} />
+            <Stack.Screen name='pdfView' component={PdfView} options={{ headerShown: false }} />
+            <Stack.Screen name='showBigImage' component={ShowBigImage} options={{ headerShown: false }} /> . */}
 
     </Stack.Navigator>
   );
 }
 
-function ProfileTab() {
+function ProfileTabStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Profile" component={Profile} />
@@ -66,8 +90,8 @@ const UserBottomTabs = () => {
         tabBarHideOnKeyboard: true,
       }}>
       <Tab.Screen 
-          name="HomeTab"
-          component={HomeTab}
+          name={RouteNames.homeTabStack}
+          component={homeTabStack}
         options={{
             headerShown: false,
             tabBarShowLabel: false,
@@ -95,13 +119,13 @@ const UserBottomTabs = () => {
         ),
         }}
         /> */}
-      <Tab.Screen name="ExpenseTab" component={ExpenseTab} 
+      <Tab.Screen name={RouteNames.addJobStack} component={AddJobStack} 
         options={{
             headerShown: false,
             tabBarShowLabel: false,
             tabBarIcon: ({focused}) => (
                 <BottomTab
-                txt={'Expense'}
+                txt={'AddJob'}
                 img={"briefcase"}
                 focusImg={"briefcase"}
                 focus={focused}
@@ -109,7 +133,7 @@ const UserBottomTabs = () => {
             ),
           }} 
       />
-      <Tab.Screen name="ChatTab" component={ChatTab} 
+      <Tab.Screen name={RouteNames.chatTabStack} component={ChatTabStack} 
         options={{
             headerShown: false,
             tabBarShowLabel: false,
@@ -123,7 +147,7 @@ const UserBottomTabs = () => {
             ),
           }} 
       />
-      <Tab.Screen name="ProfileTab" component={ProfileTab} 
+      <Tab.Screen name={RouteNames.profileTabStack} component={ProfileTabStack} 
         options={{
             headerShown: false,
             tabBarShowLabel: false,

@@ -31,7 +31,7 @@ const OptionScreen = () => {
   const handleOnPress = item => {
     setTickIcon(item.id);
       setTimeout(() => {
-        navigation.navigate(RouteNames.login);
+        navigation.navigate(RouteNames.login, { id : item.id });
       }, 1000);
 
   };
@@ -45,7 +45,7 @@ const OptionScreen = () => {
         <Octicons 
           name={item.image} 
           size={60} 
-          color={theme.lightblue} 
+          color={theme.black} 
         />
         </View>
         <View style={styles.flatlistGuide1TextView}>
@@ -73,7 +73,7 @@ const OptionScreen = () => {
           showsVerticalScrollIndicator={false}>
           <View style={styles.logoView}>
             <Image
-              source={require('@/assets/images/solarlogo.png')}
+              source={require('@/assets/images/solarlogo.jpeg')}
               style={styles.logoImage}
             />
           </View>
