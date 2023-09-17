@@ -27,7 +27,7 @@ import {scheduleData} from '@/utils/data';
 import {Metrics} from '@/assets/metrics/metrics';
 import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
-import {useDispatch} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import CalanderBox from '@/components/calanderBox';
 import CalanderBoxImg from '@/components/calanderBoxImg';
 import SettingHeader from '@/components/settingStackHeader';
@@ -37,7 +37,10 @@ import Button from '@/components/button';
 import JobCardAppliancesDetail from '@/components/jobCardAppliancesDetail';
 
 
-const JobDetailAndPayment = () => {
+const JobDetailAndPayment = (props) => {
+
+  const {data} = props?.route?.params
+
     const dispatch = useDispatch();
 
     var currdate = new Date().getDate();
@@ -47,7 +50,7 @@ const JobDetailAndPayment = () => {
     function daysInThisMonth() {
       var now = new Date();
       return new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-    }
+    }    
   
     const today = new Date();
     const year = today.getFullYear();
@@ -203,34 +206,39 @@ const JobDetailAndPayment = () => {
         );
       }
 
+
+    function Message() {
+
+        navigation.navigate(RouteNames.chatTabStack)      
+    }
+
   return (
     <SafeScrollView screenCol={theme.white} barCol={theme.white}  >
       <View style={{ marginHorizontal: 20 }} >
         <SettingHeader name="Job Detail And Payment" onPress={() => navigation.goBack()} />
       </View>
       <ScrollView>
-        <View style={{ marginTop: 20 }} >
-      {Schedules()}
+
+      <View style={{ alignItems: "flex-end", margin: 15 }} >
+          <TouchableOpacity onPress={()=>{ Message() }} style={{ width: 150, height: 50, backgroundColor: theme.darkgrey, borderRadius: 10, justifyContent: 'center', alignItems: "center" }} >
+            <Text style={{ color: theme.white, fontSize: 15, fontFamily: FONT_FAMILY.MontserratSemiBold }} >Send Message ></Text>  
+          </TouchableOpacity>
         </View>
+
+        {/* <View style={{ marginTop: 20 }} >
+      {Schedules()}
+        </View> */}
         <JobCardAppliancesDetail
-            marginTop={30}
-            id={"1"}
-            userImg={require("@/assets/images/patient.png")}
-            name={"name"}
-            title={"title"}
-            description={"description"}
-            packageList={"packageList"}
-            showRightBar={"showRightBar"}
-            btnColor={theme.lightblue}
-            btnTxt={"See Detail"}
-            onPress={"SeePostDetail"}
+            marginTop={10}
+            data={data}
             pakageHeading={"Pakage Detail:"}
+            paymentView={true}
           />
 
 
 
       </ScrollView>
-          {renderBtn()}
+          {/* {renderBtn()} */}
 
       <DatePicker
           modal
@@ -252,4 +260,16 @@ const JobDetailAndPayment = () => {
   )
 }
 
-export default JobDetailAndPayment
+
+const mapStateToProps = state => ({
+  token: state.AuthReducer.token,
+  profileData: state.AuthReducer.profileData
+});
+
+const mapDispatchToProps = {
+
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(JobDetailAndPayment);

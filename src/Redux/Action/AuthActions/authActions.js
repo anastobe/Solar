@@ -1,7 +1,23 @@
 import API from '@/APICall/api';
 import ToastAlert from '@/components/ToastAlert';
+import { Store } from '@/Redux/Store/Store';
 import { Alert } from 'react-native';
 import ActionType from '../ActionType/actionType';
+
+
+export function addCard(payload) {
+  return {
+    payload,
+    type: ActionType.ADD_CARD,
+  };
+}
+
+export function removeaddCard(payload) {
+  return {
+    payload,
+    type: ActionType.REMOVE_ADD_CARD,
+  };
+}
 
 export const RegisterApi = data => {
   return dispatch => {
@@ -68,25 +84,6 @@ export const GetProfileData = (token) => {
   
   };
 };
-
-// export const Edit_Profile = (data,token) => {
-//   return dispatch => {
-//     return API('updateProfile', data, 'post', token).then(response => {
-//       if (response?.data?.status === true) {
-//         dispatch({type: ActionType.EDITPROFILE, payload: true});
-//         ToastAlert({text1: response.data.message, type: 'success'});
-//         return true;
-//       } else {
-//         ToastAlert({text1: "Could Not Update Profile", type: 'error'});
-//         return false;
-//        }
-//       })
-//       .catch(error => {
-//         return false;
-//       });
-  
-//   };
-// };
 
 
 export const Edit_Profile = (data,token) => {
@@ -208,6 +205,25 @@ export const AddVendorJob = (data,token) => {
       })
       .catch(error => {
         console.log("add vendor job cath is running ==>",error);
+        return false;
+      });
+  };
+};
+
+export const CONTINUE_PAYMENT= (id, data, token) => {
+
+  return dispatch => {
+    return API(`payment/${id}`, data, 'post', token).then(response => {
+
+      if (response.data.status === true) {
+        ToastAlert({text1: response.data.message, type: 'success'});
+        return true;
+      } else {
+        ToastAlert({text1: response.data.message, type: 'error'});
+        return false;
+      }})
+      .catch(error => {
+        ToastAlert({text1: error.message, type: 'error'});
         return false;
       });
   };

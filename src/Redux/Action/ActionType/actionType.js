@@ -8,6 +8,8 @@ export default class ActionType {
   static GET_VENDOR_LIST = 'GET_VENDOR_LIST';
   static GET_USER_LIST = 'GET_USER_LIST';
   static FAMOUS_VENDORS = 'FAMOUS_VENDORS';
-  static EDITPROFILE = 'EDITPROFILE'
+  static EDITPROFILE = 'EDITPROFILE';
+  static ADD_CARD = 'ADD_CARD';
+  static REMOVE_ADD_CARD = 'REMOVE_ADD_CARD';
 
 }

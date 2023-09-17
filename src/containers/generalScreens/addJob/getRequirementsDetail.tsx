@@ -318,6 +318,7 @@ const GetRequirementsDetail = ({...props}) => {
             data={appliancesData}
             marginTop={25}
             pakageHeading={'Pakage Detail:'}
+            paymentView={false}
           />
 
 <InputField

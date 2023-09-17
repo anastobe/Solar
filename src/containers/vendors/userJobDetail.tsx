@@ -7,14 +7,24 @@ import { FONT_FAMILY, RouteNames } from '@/constants'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { connect } from 'react-redux'
 
 const UserJobDetail = ({...props}) => {
 
     const navigation = useNavigation();
     const {List} = props?.route?.params?.data
 
-    console.log("----",List);
     
+    function Message() {
+
+      if (props.profileData?.payment) {
+        navigation.navigate(RouteNames.chatTabStack)
+      }
+      else{
+        navigation.navigate(RouteNames.paymentDone)
+      }
+      
+    }
 
   return (
     <SafeScrollView screenCol={theme.white} isDarkMode barCol={theme.purple}>
@@ -27,7 +37,7 @@ const UserJobDetail = ({...props}) => {
       <ScrollView>
 
         <View style={{ alignItems: "flex-end", margin: 15 }} >
-          <TouchableOpacity style={{ width: 150, height: 50, backgroundColor: theme.darkgrey, borderRadius: 10, justifyContent: 'center', alignItems: "center" }} >
+          <TouchableOpacity onPress={()=>{ Message() }} style={{ width: 150, height: 50, backgroundColor: theme.darkgrey, borderRadius: 10, justifyContent: 'center', alignItems: "center" }} >
             <Text style={{ color: theme.white, fontSize: 15, fontFamily: FONT_FAMILY.MontserratSemiBold }} >Send Message ></Text>  
           </TouchableOpacity>
         </View>
@@ -36,6 +46,7 @@ const UserJobDetail = ({...props}) => {
             data={List}
             marginTop={10}
             pakageHeading={'Pakage Detail:'}
+            paymentView={false}
           />    
 
 
@@ -44,4 +55,16 @@ const UserJobDetail = ({...props}) => {
   )
 }
 
-export default UserJobDetail
+
+const mapStateToProps = state => ({
+  token: state.AuthReducer.token,
+  profileData: state.AuthReducer.profileData
+});
+
+const mapDispatchToProps = {
+
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserJobDetail);

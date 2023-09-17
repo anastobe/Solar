@@ -16,7 +16,8 @@ const initialState = {
   editProfile: {},
   vendorList: [],
   famousVendors: [],
-  userJobList: []
+  userJobList: [],
+  cards: []
 };
 
 export default (state = initialState, action) => {
@@ -49,6 +50,10 @@ export default (state = initialState, action) => {
       return {...state, famousVendors: action.payload};
     case ActionType.GET_USER_LIST:
       return {...state, userJobList: action.payload};
+    case ActionType.ADD_CARD:
+      return {...state, cards: [...state.cards, action.payload]};
+    case ActionType.REMOVE_ADD_CARD:
+      return {...state, cards: action.payload};
       
 
     case ActionType.LOGOUT:
@@ -56,7 +61,7 @@ export default (state = initialState, action) => {
         ...state,
         // AuthLoader: false,
         // signupData: {},
-        isLogin: "provider",
+        isLogin: "user",
         // token: '',
         // id: '',
         // type: '',

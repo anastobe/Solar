@@ -16,6 +16,7 @@ import AvgEstimatePrice from '@/containers/generalScreens/addJob/avgEstimatePric
 import UserJobDetail from '@/containers/vendors/userJobDetail';
 import Notification from '@/containers/generalScreens/notification';
 import FamousVendors from '@/containers/generalScreens/famousVendors';
+import ProceedPayment from '@/containers/generalScreens/ProceedPayment';
 
 const ProviderRoutes = () => {
   const Stack = createNativeStackNavigator();
@@ -49,6 +50,12 @@ const ProviderRoutes = () => {
       <Stack.Screen
         name={RouteNames.paymentDone}
         component={PaymentDone}
+        options={{headerShown: false}}
+      />
+      
+      <Stack.Screen 
+        name="ProceedPayment" 
+        component={ProceedPayment} 
         options={{headerShown: false}}
       />
 

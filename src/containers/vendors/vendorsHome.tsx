@@ -25,10 +25,7 @@ import { connect } from 'react-redux';
 
 const VendorsHome = props => {
 
-  console.log('================VendorsHome====================',props?.userJobList);
-
-
-    const navigation = useNavigation()
+  const navigation = useNavigation()
     const Focus= useIsFocused()
 
     useEffect(() => {   

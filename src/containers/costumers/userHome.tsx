@@ -122,7 +122,7 @@ const UserHome = props => {
         } = item
 
         function SeePostDetail() {
-          navigation.navigate(RouteNames.jobDetailAndPayment)
+          navigation.navigate(RouteNames.jobDetailAndPayment,{ data: item })
         }
 
         return (

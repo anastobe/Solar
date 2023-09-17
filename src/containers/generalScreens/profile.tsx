@@ -35,7 +35,7 @@ const Profile = props => {
 
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [Focus]);
 
   const getProfile = async () => {
     await props.GetProfileData(props.token);

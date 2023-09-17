@@ -7,7 +7,9 @@ const theme = {
     lightblue: '#2790BF',
     darkgrey: '#6E7071',
     purple: "#471c58",
-    greyC: "#cbcbcb"
+    greyC: "#cbcbcb",
+    red: '#FF0000',
+    inputPlaceholder: '#C8D3DB'
 
 
   };

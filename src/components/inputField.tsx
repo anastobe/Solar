@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 // import styles from '@/assets/styles/authstyles/login'
 import theme from '@/assets/styles/theme';
-import {FONT_FAMILY} from '@/constants';
+import {FONT_FAMILY} from '@/constants/index';
 import {Metrics} from '@/assets/metrics/metrics';
 
 export default function InputField({...props}) {
@@ -41,7 +41,7 @@ export default function InputField({...props}) {
         onPress={onPress}
         style={[
           styles.inputFieldView,
-          {borderColor: invalid ? theme.red : theme.grey, width: width},
+          {borderColor: invalid ? theme.red : theme.greyC, width: width},
         ]}>
         <TextInput
           placeholder={placeholder}

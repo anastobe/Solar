@@ -10,15 +10,16 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const JobCardAppliancesDetail = (item) => {
-  
-  const navigation = useNavigation()
 
   const {    
     data,
     marginTop,
-    pakageHeading
+    pakageHeading,
+    paymentView
   } = item || {}
 
+  console.log("00000---000",data);
+  
 
   return (
     <View style={[styles.cardContainer, { marginTop: marginTop }]}>
@@ -26,6 +27,46 @@ const JobCardAppliancesDetail = (item) => {
       <View style={styles.cardThirdLine}>
         <Text style={styles.pakageHeading}>{pakageHeading}</Text>
       </View>
+      
+      {paymentView ? 
+      <View>
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>Area</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.area} sq-feet</Text>
+            </View>
+
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>Battery</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.battery}.</Text>
+            </View>
+
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>days For Instalation</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.daysForInstalation}.</Text>
+            </View>
+
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>extraExpense</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.extraExpense}.</Text>
+            </View>
+
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>no of Panels</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.noofpanels}.</Text>
+            </View>
+
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>Price</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.price}.</Text>
+            </View>
+
+            <View style={styles.cardFourthLineLeft}>
+              <Text style={styles.widthTextAppL}>total Watts</Text> 
+              <Text style={styles.widthTextL}>{data?.packageList?.ttklWatts}.</Text>
+            </View>
+        </View>
+      : 
+      <View>
       {data && data.map((e)=>{
       if (e.applianceCount > 0) {
         return(
@@ -38,6 +79,8 @@ const JobCardAppliancesDetail = (item) => {
           )
           }
         })}
+      </View>
+      }
         
     </View>
   );
