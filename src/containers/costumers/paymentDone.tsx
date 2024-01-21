@@ -329,32 +329,35 @@ const PaymentDone = props => {
             />
 
             <InputFieldMask
+              maxLen={19}
               height={55}
-              icon={<Octicons name="person" size={22} color="black" />}
               placeholderTextColor={theme.darkgrey}
-              placeholder="Card holder's name"
+              placeholder="Card holder name"
               onChangeText={handleSetName}
+              icon={<Octicons name="credit-card" size={22} color="black" />}
               value={name}
-              maxlen={20}
-              keyboardType={'default'}
               mask={[
                 /\d/,
                 /\d/,
                 /\d/,
                 /\d/,
+                '-',
                 /\d/,
                 /\d/,
                 /\d/,
                 /\d/,
+                '-',
                 /\d/,
                 /\d/,
                 /\d/,
                 /\d/,
+                '-',
                 /\d/,
                 /\d/,
                 /\d/,
                 /\d/,
               ]}
+              keyboardType={'numeric'}
             />
 
             <View style={{flexDirection: 'row'}}>

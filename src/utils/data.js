@@ -498,26 +498,31 @@ export const FamousVendors = [
   {
     id: 0,
     image: require("@/assets/images/user.png"),
+    name: "anas",
     showRightBar: true
   },
   {
     id: 1,
     image: require("@/assets/images/user.png"),
+    name: "anas",
     showRightBar: true
   },
   {
     id: 2,
     image: require("@/assets/images/user.png"),
+    name: "anas",
     showRightBar: true
   },
   {
     id: 3,
     image: require("@/assets/images/user.png"),
+    name: "anas",
     showRightBar: true
   },
   {
     id: 4,
     image: require("@/assets/images/user.png"),
+    name: "anas",
     showRightBar: false
   }
 
@@ -593,173 +598,77 @@ export const vendorHomePkg = [
 
 export const PostItemsList = [
   {
-    id: 0,
-    userImg: require("@/assets/images/person.png"),
-    name: "anas ahmed1",
-    title: "title",
-    description: "my description",
-    List:[
-      {
-        id: 0, 
-        applianceCount: 2, 
-        applianceName: "Fan",
-        totalwattofthisAppliance: 200, 
-        watt: 100
-    },
-    {
-      id: 1, 
-      applianceCount: 1, 
-      applianceName: "Light LED", 
-      totalwattofthisAppliance: 100, 
-      watt: 100
-    },
-    {
-      id: 2, 
-      applianceCount: 0, 
-      applianceName: "Microwave", 
-      totalwattofthisAppliance: 0, 
-      watt: 1500
-    },
-    {
-      id: 3, 
-      applianceCount: 0, 
-      applianceName: "Iron", 
-      totalwattofthisAppliance: 0, 
-      watt: 1000
-    },
-    {
-      id: 4, 
-      applianceCount: 2, 
-      applianceName: "Fan",
-      totalwattofthisAppliance: 200, 
-      watt: 100
+      id: "6506cd1869b91c341ac1230d",
+      userImg: "userImg",
+      name: "Bazif",
+      title: "Pak Solar",
+      description: "we provide solar panel service in low price",
+      List: [
+          {
+              totalwatts: "30000",
+              noofLedFan: "1",
+              noofBulb: "2",
+              microwave: "3",
+              iron: "0",
+              fridge: "1",
+              nonLEDliGHT: "10"
+          }
+      ],
   },
   {
-    id: 5, 
-    applianceCount: 1, 
-    applianceName: "Light LED", 
-    totalwattofthisAppliance: 100, 
-    watt: 100
-  },
-  {
-    id: 6, 
-    applianceCount: 0, 
-    applianceName: "Microwave", 
-    totalwattofthisAppliance: 0, 
-    watt: 1500
-  },
-  {
-    id: 7, 
-    applianceCount: 0, 
-    applianceName: "Iron", 
-    totalwattofthisAppliance: 0, 
-    watt: 1000
-  }],
-    showRightBar: true
-  },
-  {
-    id: 1,
-    userImg: require("@/assets/images/person.png"),
-    name: "anas ahmed2",
-    title: "title",
-    description: "my description",
-    List:[
-    {
-      id: 2, 
-      applianceCount: 4, 
-      applianceName: "Microwave", 
-      totalwattofthisAppliance: 20, 
-      watt: 1500
-    },
-    {
-      id: 3, 
-      applianceCount: 20, 
-      applianceName: "Iron", 
-      totalwattofthisAppliance: 20, 
-      watt: 1000
-    } 
+    id: "6506cd1869b9f341ac1230d",
+    userImg: "userImg",
+    name: "Ali azian",
+    title: "Pak Solar",
+    description: "we provide solar panel service in low price",
+    List: [
+        {
+            totalwatts: "30000",
+            noofLedFan: "1",
+            noofBulb: "2",
+            microwave: "3",
+            iron: "0",
+            fridge: "1",
+            nonLEDliGHT: "10"
+        }
     ],
-    showRightBar: true
-  },
-  {
-    id: 2,
-    userImg: require("@/assets/images/person.png"),
-    name: "anas ahmed3",
-    title: "title",
-    description: "my description",
-    List:[
+},
+{
+  id: "6506cd1869b91c341ac1230d",
+  userImg: "userImg",
+  name: "Bazif",
+  title: "Pak Solar",
+  description: "we provide solar panel service in low price",
+  List: [
       {
-        id: 2, 
-        applianceCount: 2, 
-        applianceName: "Microwave", 
-        totalwattofthisAppliance: 200, 
-        watt: 1500
-      } 
-    ],
-    showRightBar: true
-  },
-  {
-    id: 3,
-    userImg: require("@/assets/images/person.png"),
-    name: "anas ahmed4",
-    title: "title",
-    description: "my description",
-    List:[
-      {
-        id: 0, 
-        applianceCount: 2, 
-        applianceName: "Fan",
-        totalwattofthisAppliance: 200, 
-        watt: 100
-    },
-    {
-      id: 1, 
-      applianceCount: 1, 
-      applianceName: "Light LED", 
-      totalwattofthisAppliance: 100, 
-      watt: 100
-    },
-    {
-      id: 2, 
-      applianceCount: 3, 
-      applianceName: "Microwave", 
-      totalwattofthisAppliance: 0, 
-      watt: 1500
-    },
-    {
-      id: 3, 
-      applianceCount: 4, 
-      applianceName: "Iron", 
-      totalwattofthisAppliance: 200, 
-      watt: 1000
-    } 
+          totalwatts: "30000",
+          noofLedFan: "1",
+          noofBulb: "2",
+          microwave: "3",
+          iron: "0",
+          fridge: "1",
+          nonLEDliGHT: "10"
+      }
   ],
-    showRightBar: true
-  },
-  {
-    id: 4,
-    userImg: require("@/assets/images/person.png"),
-    name: "anas ahmed5",
-    title: "title",
-    description: "my description",
-    List:[
-      {
-        id: 0, 
-        applianceCount: 2, 
-        applianceName: "Fan",
-        totalwattofthisAppliance: 200, 
-        watt: 100
-    },
+},
+{
+id: "6506cd1869b9f3f1ac1230d",
+userImg: "userImg",
+name: "Ali azian",
+title: "Pak Solar",
+description: "we provide solar panel service in low price",
+List: [
     {
-      id: 3, 
-      applianceCount: 3, 
-      applianceName: "Iron", 
-      totalwattofthisAppliance: 0, 
-      watt: 1000
-    } 
-  ],
-    showRightBar: true
-  }
+        totalwatts: "30000",
+        noofLedFan: "1",
+        noofBulb: "2",
+        microwave: "3",
+        iron: "0",
+        fridge: "1",
+        nonLEDliGHT: "10"
+    }
+],
+},
 ]
 
 export const DrawerMenusProvider = [

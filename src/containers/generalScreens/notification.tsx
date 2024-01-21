@@ -21,7 +21,7 @@ const Notification = () => {
             textColor={theme.black}
           />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Text>Notification</Text>
+          <Text style={{ color: "black", textAlign: "center", marginTop: 20 }} >No Notification Found</Text>
 
         </ScrollView>
       </View>

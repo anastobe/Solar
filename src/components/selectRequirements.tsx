@@ -23,10 +23,10 @@ const SelectRequirements = ({...props}) => {
         }}>
         <View style={{marginLeft: 20, flexDirection: 'row'}}>
           <View>
-            <Text>{noItem}</Text>
+            <Text style={{ color: "black" }} >{noItem}</Text>
           </View>
           <View style={{marginLeft: 20}}>
-            <Text>{itemName}</Text>
+            <Text style={{ color: "black" }} >{itemName}</Text>
           </View>
         </View>
 

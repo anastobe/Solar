@@ -1,23 +1,3 @@
-// import React from 'react';
-// import { Text, View } from 'react-native';
-// import SafeScrollView from '@/components/safeScrollView';
-// import theme from '@/assets/styles/theme';
-
-// const Signup = () => {
-//     return(
-//         <SafeScrollView screenCol={theme.white} barCol={theme.white}  >
-//             <Text>Signup</Text>
-//         </SafeScrollView>
-//     )
-// };
-
-// export default Signup
-
-
-
-
-
-
 import React, { useState } from "react";
 import { Text, View, Pressable, Image, TouchableOpacity, ScrollView, StatusBar } from "react-native";
 import styles from '@/assets/styles/authstyles/signup';
@@ -45,6 +25,7 @@ const Signup  = props => {
     const [email, setEmail] = useState('anas@gmail.com');
     const [password, setPassword] = useState('AsgL9751-');
     const [cnfrm_password, setcnfrm_Password] = useState('AsgL9751-');
+    const [usertype, setusertype] = useState('');
     const [isInvalidUsername, setIsInvalidUsername] = useState('');
     const [isInvalidEmail, setIsInvalidEmail] = useState('');
     const [isInvalidPassword, setIsInvalidPassword] = useState(false);
@@ -141,7 +122,9 @@ const Signup  = props => {
               password: password,
               password_confirmation: cnfrm_password,
               tc: true,
-              type: "provider"
+              type: "provider",
+              payment: true,
+              profileImage: "String"
             };
             
             let response = await props.RegisterApi(data,navigation);
@@ -188,8 +171,13 @@ const Signup  = props => {
         setIsInvalidCnfrmPassword(false)
       }
   }
-    
-
+  
+  const selecteduserType = (type: string) =>{
+    setusertype(type)
+  }
+  
+  console.log("===>",usertype);
+  
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <StatusBar />
@@ -258,6 +246,16 @@ const Signup  = props => {
               tintColor={'#2E90BF'}
               onPressImg={() => setHide2(!hide2)}
             />
+
+            <View style={{ flexDirection: "row", marginTop: 20, justifyContent: "space-around" }} >
+              <TouchableOpacity onPress={()=>{ selecteduserType('provider') }} style={{ width: 120, height: 50, backgroundColor: usertype == 'provider' ? "#f4f4f4" : "#cbcbcb", borderRadius: 5, borderWidth: 1, borderColor: "#000", justifyContent: "center" }} >
+                <Text style={styles.optTxt} >Provider</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{ selecteduserType('user') }} style={{ width: 120, height: 50, backgroundColor:  usertype == 'provider' ? "#f4f4f4" : "#cbcbcb", borderRadius: 5, borderWidth: 1, borderColor: "#000", justifyContent: "center" }} >
+                <Text style={styles.optTxt} >User</Text>
+              </TouchableOpacity>
+            </View>
 
               <View style={{marginVertical: 13, marginTop: 20}}>
                 <Text style={styles.orButton}>or</Text>

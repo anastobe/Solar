@@ -32,7 +32,7 @@ import {
 
 const GetRequirementsDetail = ({...props}) => {
   const {appliancesData} = props.route.params;
-
+  
   const navigation = useNavigation();
   const islogin = useSelector(state => state?.AuthReducer?.isLogin);
 

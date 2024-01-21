@@ -119,7 +119,7 @@ const HeaderHomePage = ({...props}) => {
                       fontSize: 14,
                       marginLeft: 15,
                       fontFamily: FONT_FAMILY.MontserratRegular,
-                      color: theme.themePurple3,
+                      color: theme.black,
                     }}>
                     What’s in your mind?
                   </Text>

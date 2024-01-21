@@ -202,7 +202,8 @@ const styles = StyleSheet.create({
   widthTextAppL: {
     marginLeft: 10,
     fontSize: 12,
-    fontFamily: FONT_FAMILY.MontserratSemiBold
+    fontFamily: FONT_FAMILY.MontserratSemiBold,
+    color: theme.black
   },
   widthTextAppR: {
     marginLeft: 10,
@@ -212,7 +213,8 @@ const styles = StyleSheet.create({
   widthTextL: {
     marginRight: 10,
     fontSize: 12,
-    fontFamily: FONT_FAMILY.MontserratSemiBold
+    fontFamily: FONT_FAMILY.MontserratSemiBold,
+    color: theme.black
   },
   widthTextR: {
     marginRight: 10,

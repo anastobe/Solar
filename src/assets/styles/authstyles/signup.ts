@@ -9,6 +9,12 @@ export default StyleSheet.create({
         color: '#72777A',
         fontFamily: FONT_FAMILY.InterRegular,
     },
+    optTxt:{
+        textAlign: 'center',
+        fontSize: 16,
+        color: '#000',
+        fontFamily: FONT_FAMILY.InterRegular,
+    },
     signUpHeading: {
         color: 'black',
         fontFamily: FONT_FAMILY.InterBold,

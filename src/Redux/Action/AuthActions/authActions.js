@@ -21,7 +21,11 @@ export function removeaddCard(payload) {
 
 export const RegisterApi = data => {
   return dispatch => {
+    console.log('====================================',data);
     return API('register', data, 'post').then(response => {
+
+
+
        if (response.data.status === false) {
         ToastAlert({text1: response.data.message, type: 'error'});
         return false;
