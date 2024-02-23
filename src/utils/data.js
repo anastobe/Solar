@@ -358,7 +358,7 @@ export const patProfile = [
   },
   {
     title: 'Preference',
-    data: [
+    data: [ 
       // {
       //   id: 4,
       //   img: require('@/assets/images/setting.png'),
