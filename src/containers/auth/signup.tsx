@@ -114,7 +114,17 @@ const Signup  = props => {
               statusBarHeight : StatusBar.currentHeight
           });
           return
-      }  
+      }
+      else if (usertype == '') {
+        showMessage({
+            message: "Please Select User Role",
+            type: "default",
+            backgroundColor: "#0760F0",
+            color: "white",
+            statusBarHeight : StatusBar.currentHeight
+        });
+        return
+      }   
         else {          
             let data = {
               name: username,
@@ -122,13 +132,13 @@ const Signup  = props => {
               password: password,
               password_confirmation: cnfrm_password,
               tc: true,
-              type: "provider",
+              type: usertype,
               payment: true,
               profileImage: "String"
             };
             
             let response = await props.RegisterApi(data,navigation);
-     
+
             if (response) {
                 setEmail('')
                 setUserName('')
@@ -248,41 +258,18 @@ const Signup  = props => {
             />
 
             <View style={{ flexDirection: "row", marginTop: 20, justifyContent: "space-around" }} >
-              <TouchableOpacity onPress={()=>{ selecteduserType('provider') }} style={{ width: 120, height: 50, backgroundColor: usertype == 'provider' ? "#f4f4f4" : "#cbcbcb", borderRadius: 5, borderWidth: 1, borderColor: "#000", justifyContent: "center" }} >
-                <Text style={styles.optTxt} >Provider</Text>
+              <TouchableOpacity onPress={()=>{ selecteduserType('provider') }} style={{ width: 120, height: 50, backgroundColor: usertype == 'provider' ? "blue" : "#f4f4f4", borderRadius: 5, borderWidth: 1, borderColor: "#000", justifyContent: "center" }} >
+                <Text style={[styles.optTxt,{ color:  usertype == 'provider' ? "#fff" : "#000" }]} >Provider</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ selecteduserType('user') }} style={{ width: 120, height: 50, backgroundColor:  usertype == 'provider' ? "#f4f4f4" : "#cbcbcb", borderRadius: 5, borderWidth: 1, borderColor: "#000", justifyContent: "center" }} >
-                <Text style={styles.optTxt} >User</Text>
+              <TouchableOpacity onPress={()=>{ selecteduserType('user') }} style={{ width: 120, height: 50, backgroundColor:  usertype == 'user' ? "blue" : "#f4f4f4", borderRadius: 5, borderWidth: 1, borderColor: "#000", justifyContent: "center" }} >
+                <Text style={[styles.optTxt,{ color:  usertype == 'user' ? "#fff" :  "#000" }]} >User</Text>
               </TouchableOpacity>
             </View>
 
               <View style={{marginVertical: 13, marginTop: 20}}>
                 <Text style={styles.orButton}>or</Text>
               </View>
-
-        <ImgButton
-          marginTp={10}
-          marginHorizontal={40}
-          onPress={() => console.log("google")}
-          title="Continue with Google"
-          distance={0}
-          borderWidth={1}
-          borderColor={theme.lightblue}
-          bgcolor={theme.white}
-          // btnImg={require('@/assets/images/patient.png')}
-          txtColor={theme.darkgrey}
-          verticalDistance={15}
-          width={14}
-          height={14}
-          horizontalDistance={5}
-        >
-          <FontAwesome
-            name="google"
-            size={15}
-            color={theme.black}
-          />
-        </ImgButton>
 
             </View>
             {/* <View style={{height: 80}}></View> */}

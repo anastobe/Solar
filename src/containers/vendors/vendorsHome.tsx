@@ -51,7 +51,7 @@ const VendorsHome = props => {
 
       function renderItem({item}) {
   
-        console.log("---".item);
+        console.log("---",item);
 
           const {    
               id,

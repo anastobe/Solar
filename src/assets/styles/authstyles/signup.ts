@@ -12,7 +12,6 @@ export default StyleSheet.create({
     optTxt:{
         textAlign: 'center',
         fontSize: 16,
-        color: '#000',
         fontFamily: FONT_FAMILY.InterRegular,
     },
     signUpHeading: {

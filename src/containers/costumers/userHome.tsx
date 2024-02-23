@@ -31,7 +31,7 @@ const UserHome = props => {
     const Focus= useIsFocused()
 
     useEffect(() => {
-      GetFamousVen();      
+      // GetFamousVen();      
       VendorsList();
     }, [Focus]);
   
@@ -109,6 +109,26 @@ const UserHome = props => {
     );
   };
 
+  function ListHeaderComponent() {
+
+    return(
+      <>
+      <HeaderHomePage
+        routeName={RouteNames.addJobStack}
+        nav={navigation}
+        showBottomHomePageContent={true}
+        height={130}
+        loader={false}
+      />
+      {/* {renderListHeader("Fomous Vendors")} */}
+      {/* {MediaOptions()} */}
+      {renderListHeader("Vendors List")}
+
+      </>
+    )
+    
+  }
+
   function PostItems() {
 
     function renderItem({item}) {
@@ -147,33 +167,18 @@ const UserHome = props => {
       <FlatList
         data={props?.vendorList}
         renderItem={renderItem}
-        // refreshing={false}
-        // onRefresh={console.log(refresh)}
-        // onEndReached={()=>{console.log("load more data")}}
-        // onEndReachedThreshold={0}
+        ListHeaderComponent={ListHeaderComponent}
+        refreshing={false}
+        onRefresh={()=>{ props.GetVendorsList() }}
+        onEndReached={()=>{console.log("load more data")}}
+        onEndReachedThreshold={0}
       />
     );
   }
 
   return (
     <SafeScrollView screenCol={theme.white} isDarkMode barCol={theme.purple}>
-
-      <HeaderHomePage
-        routeName={RouteNames.addJobStack}
-        nav={navigation}
-        showBottomHomePageContent={true}
-        height={130}
-        loader={false}
-      />
-
-      <ScrollView>
-
-      {renderListHeader("Fomous Vendors")}
-      {MediaOptions()}
-      {renderListHeader("Vendors List")}
       {PostItems()} 
-
-      </ScrollView>
     </SafeScrollView>
   );
 };

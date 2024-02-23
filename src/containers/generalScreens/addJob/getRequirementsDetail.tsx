@@ -50,7 +50,6 @@ const GetRequirementsDetail = ({...props}) => {
     daysForInstalation: 10,
   });
 
-  console.log("---",props.profileData);
   
 
   async function onClickProvider() {
@@ -173,7 +172,7 @@ const GetRequirementsDetail = ({...props}) => {
       });
     } 
     else{
-      
+
     let data = {
       userImg: 'userImg',
       name: isState.name,
@@ -188,7 +187,13 @@ const GetRequirementsDetail = ({...props}) => {
 
 
       if (response) {
-        navigation.goBack()
+
+        if (islogin == 'user') {
+          navigation.navigate(RouteNames.userBottomTabs)
+        } else if(islogin == 'provider') {
+          navigation.navigate(RouteNames.providerBottomTabs)
+        }
+
       }
     }
 

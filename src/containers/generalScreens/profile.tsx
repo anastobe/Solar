@@ -204,7 +204,10 @@ const Profile = props => {
                   style={styles.yesTextView}
                   onPress={() => {
                     setModalVisible(false);
+
                     props.Logout();
+                    navigation.reset({index: 0, routes: [{name: RouteNames.login}] })
+                    // RNRestart.restart();
                   }}>
                   <Text style={styles.yesText}>Yes</Text>
                 </Pressable>
@@ -222,7 +225,8 @@ const Profile = props => {
           <View style={styles.topView}>
             <View style={styles.imgView}>
               <Image
-                source={ require('@/assets/images/user.png') }
+                resizeMode='contain'
+                source={ require('@/assets/images/person.png') }
                 style={styles.manImg}
               />
             </View>

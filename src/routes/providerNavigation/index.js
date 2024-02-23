@@ -17,6 +17,7 @@ import UserJobDetail from '@/containers/vendors/userJobDetail';
 import Notification from '@/containers/generalScreens/notification';
 import FamousVendors from '@/containers/generalScreens/famousVendors';
 import ProceedPayment from '@/containers/generalScreens/ProceedPayment';
+import Login from '@/containers/auth/login';
 
 const ProviderRoutes = () => {
   const Stack = createNativeStackNavigator();
@@ -29,7 +30,11 @@ const ProviderRoutes = () => {
         // component={()=><View><Text>asdasdssad</Text></View>)}
         options={{headerShown: false}}
       />
-
+      <Stack.Screen
+        name={RouteNames.login}
+        component={Login}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         options={{headerShown: false}}
         name={RouteNames.getRequirements}

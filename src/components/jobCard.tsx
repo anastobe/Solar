@@ -61,7 +61,7 @@ const JobCard = (item) => {
 
      <FlatList
        data={List}
-       numColumns={2}
+       numColumns={1}
        renderItem={({item})=>{   
         
         if (item?.applianceCount>0) {   

@@ -93,18 +93,15 @@ export const GetProfileData = (token) => {
 export const Edit_Profile = (data,token) => {
   return dispatch => {
     return API('updateProfile', data, 'put', token).then(response => {
-
-      // console.log("--------",response);
       
-      
-      // if (response?.data?.status === true) {
-      //   dispatch({type: ActionType.EDITPROFILE, payload: true});
-      //   ToastAlert({text1: response.data.message, type: 'success'});
-      //   return true;
-      // } else {
-      //   ToastAlert({text1: "Could Not Update Profile", type: 'error'});
-      //   return false;
-      //  }
+      if (response?.data?.status === true) {
+        ToastAlert({text1: response.data.message, type: 'success'});
+        dispatch({type: ActionType.GET_PROFILE, payload: response?.data?.updatedUser});
+        return true;
+      } else {
+        ToastAlert({text1: "Could Not Update Profile", type: 'error'});
+        return false;
+       }
       })
       .catch(error => {
         return false;
@@ -235,6 +232,6 @@ export const CONTINUE_PAYMENT= (id, data, token) => {
 
 export const Logout = () => {
   return dispatch => {
-    dispatch({type: ActionType.LOGOUT});
+    dispatch({type: ActionType.LOGOUT, payload: 'auth'});
   };
 };

@@ -359,11 +359,11 @@ export const patProfile = [
   {
     title: 'Preference',
     data: [
-      {
-        id: 4,
-        img: require('@/assets/images/setting.png'),
-        heading: 'Settings',
-      },
+      // {
+      //   id: 4,
+      //   img: require('@/assets/images/setting.png'),
+      //   heading: 'Settings',
+      // },
       {
         id: 6,
         img: require('@/assets/images/info_icon.png'),

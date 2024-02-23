@@ -65,7 +65,7 @@ const Login = props => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [hide, setHide] = useState(true);
-  const [inputEmail, setInputEmail] = useState('anass@gmail.com');
+  const [inputEmail, setInputEmail] = useState('user1@gmail.com');
   const [password, setPassword] = useState('AsgL9751-');
   const [isInvalidEmail, setIsInvalidEmail] = useState('');
   const [isInvalidPassword, setIsInvalidPassword] = useState('');
@@ -182,8 +182,8 @@ const Login = props => {
       
       let response = await props.LoginApi(data);
 
-      console.log("----===login==> ",response);
-      
+      console.log("----===login==> ",response);      
+
 
       if (response?.data?.usertype == "provider") {
         navigation.reset({
@@ -191,20 +191,19 @@ const Login = props => {
           routes: [{name: RouteNames.providerBottomTabs}],
         });
         dispatch({type: ActionType.IS_LOGIN, payload: "provider"});
+        Alert.alert("you logged into SAAB project as a provider")
+        return
       } else if (response?.data?.usertype == "user"){
         navigation.reset({
           index: 0,
           routes: [{name: RouteNames.userBottomTabs}],
         });
         dispatch({type: ActionType.IS_LOGIN, payload: "user"});
+        Alert.alert("you logged into SAAB project as a user")
+        return
       }
-
-    Alert.alert("you loged in SAAB project")
-
-    return
       setInputEmail('');
       setPassword('');
-  
   
     }
   };

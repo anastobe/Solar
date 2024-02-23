@@ -39,7 +39,7 @@ import moment from 'moment';
 import {useNavigation} from '@react-navigation/native';
 import {connect, useSelector} from 'react-redux';
 import Octicons from 'react-native-vector-icons/Octicons';
-import { Edit_Profile } from '@/Redux/Action/AuthActions/authActions';
+import { Edit_Profile, GetProfileData } from '@/Redux/Action/AuthActions/authActions';
 import InputField from '@/components/inputField';
 import { showMessage } from 'react-native-flash-message';
 
@@ -47,6 +47,9 @@ const EditProfile = props => {
 
   const navigation = useNavigation();
   // const signupDta = useSelector(state => state?.userReducer?.signupData);
+
+  console.log("===user data==>",props?.profileData);
+  
 
   const [isState, setIsState] = useState({
     id: '',
@@ -60,7 +63,7 @@ const EditProfile = props => {
   useEffect(() => {
     setIsState({...isState, 
       name: props?.profileData?.name,
-      email: props?.profileData?.name,
+      email: props?.profileData?.email,
       id: props?.profileData?._id
     })
   }, []);
@@ -171,7 +174,22 @@ const EditProfile = props => {
         name: isState.name,
         email: isState.email
       };
-      await props.Edit_Profile(data, props?.token);
+      let res = await props.Edit_Profile(data, props?.token);
+      if (res) {
+        // alert("profile updated");
+        
+        // props.GetProfileData()
+        navigation.goBack();
+      }
+      else{
+        showMessage({
+          message: 'Something Went Wrong',
+          type: 'default',
+          backgroundColor: theme.lightblue,
+          color: theme.white,
+          statusBarHeight: StatusBar.currentHeight,
+        });
+      }
     }
 
     
@@ -196,7 +214,7 @@ const EditProfile = props => {
 
           <PickImg
             img={
-               require('@/assets/images/user.png')
+               require('@/assets/images/person.png')
             }
             onPress={GetProfilePic}
             imgBack={styles2.imgBack}
@@ -257,7 +275,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProp = {
-  Edit_Profile: Edit_Profile
+  Edit_Profile: Edit_Profile,
+  // GetProfileData: GetProfileData
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProp)(EditProfile);
@@ -268,14 +288,14 @@ export default connect(mapStateToProps, mapDispatchToProp)(EditProfile);
 
 const styles2 = StyleSheet.create({
   imgBack: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     alignSelf: 'center',
     marginTop: 20,
   },
   imgInside: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     // backgroundColor: "red",
     borderRadius: 100,
     resizeMode: 'cover',

@@ -23,9 +23,12 @@ const StackNav = ({handleNav}) => {
         <UserRoutes /> //User navigation
       ) 
       : 
+      islogin == "auth" ?
       (
         <AuthStack /> //auth screens
       )
+      :
+      null
       }
     </View>
   );

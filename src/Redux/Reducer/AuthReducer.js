@@ -3,7 +3,7 @@ import ActionType from '../Action/ActionType/actionType';
 const initialState = {
   AuthLoader: false,
   signupData: {},
-  isLogin: null,
+  isLogin: 'auth',
   token: '',
   id: '',
   type: '',
@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
         ...state,
         // AuthLoader: false,
         // signupData: {},
-        isLogin: "user",
+        isLogin: 'auth',
         // token: '',
         // id: '',
         // type: '',

@@ -76,8 +76,8 @@ export default StyleSheet.create({
     // backgroundColor: "red"
   },
   manImg: {
-    width: 95,
-    height: 95,
+    width: 65,
+    height: 65,
     borderRadius: 50,
   },
   cameraView: {

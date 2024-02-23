@@ -16,6 +16,7 @@ import AvgEstimatePrice from '@/containers/generalScreens/addJob/avgEstimatePric
 import Notification from '@/containers/generalScreens/notification';
 import FamousVendors from '@/containers/generalScreens/famousVendors';
 import CalculateExpense from '@/containers/generalScreens/calculateExpense';
+import Login from '@/containers/auth/login';
 
 
 const UserRoutes = () => {
@@ -30,6 +31,11 @@ const UserRoutes = () => {
   name={RouteNames.userBottomTabs}
   component={UserBottomTabs}
   options={{headerShown: false}}
+/>
+<Stack.Screen
+    name={RouteNames.login}
+    component={Login}
+    options={{headerShown: false}}
 />
 <Stack.Screen 
   options={{headerShown: false}} 
