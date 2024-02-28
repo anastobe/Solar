@@ -29,7 +29,7 @@ const DrawerView = ({...props}) => {
        />
             </View> */}
             <TouchableOpacity onPress={()=>{ navigation.navigate('ProfileTab') }} style={{ alignItems: 'center'}}  >
-                <Text style={{ color: theme.white, fontSize: 18 }} >DR: Anas Ahmed</Text>
+                <Text style={{ color: theme.white, fontSize: 18 }} >{props?.profileData?.name?.toUpperCase()}</Text>
                 <Text style={{ color: theme.white, fontSize: 18 }} >View Profile</Text>
             </TouchableOpacity>
       
@@ -79,7 +79,7 @@ const DrawerView = ({...props}) => {
 
 const mapStateToProps = state => ({
   token: state.AuthReducer.token,
-  profileData: state.AuthReducer.profileData
+  profileData: state.AuthReducer.profileData,
 
 });
 

@@ -26,7 +26,7 @@ import { connect } from 'react-redux';
 const VendorsHome = props => {
 
   const navigation = useNavigation()
-    const Focus= useIsFocused()
+  const Focus= useIsFocused()
 
     useEffect(() => {   
       UserJobList();
@@ -105,6 +105,7 @@ const VendorsHome = props => {
       <HeaderHomePage
         routeName={'ProviderAddJobStack'}
         nav={navigation}
+        showDrawerIcon={true}
         showBottomHomePageContent={true}
         height={130}
         loader={false}

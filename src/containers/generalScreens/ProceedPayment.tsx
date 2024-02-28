@@ -11,6 +11,8 @@ import SettingHeader from '@/components/settingStackHeader';
 import ActionType from '@/Redux/Action/ActionType/actionType';
 import { RouteNames } from '@/constants';
 
+var stripe = require('stripe-client')('pk_test_51O0AnUHvsswwFzcdOfhLuJmLfGUGoekoIgUdhOdZrNurhKoKjcSfWzmHbI4ytL7hE5hwTyMPOov2VRcOHaigvAji00Js1TZJzo');
+
 const ProceedPayment = ({ ...props }) => {
 
     const navigation = useNavigation();
@@ -67,13 +69,30 @@ const ProceedPayment = ({ ...props }) => {
 
     const ApiCall = async (item) => {
 
-      let data = {
-        payment: true
+      var card = await stripe.createToken(item);
+      var token = card.id;
+
+      let dataF = new FormData();
+      dataF.append('package_id', pkgId);
+      dataF.append('stripe_token', token);
+
+      console.log("=response=",token);
+      if (token) {
+        ToastAlert({text1: 'Transaction Successfull', type: 'success'});
       }
-      let response = await props.CONTINUE_PAYMENT(props?.profileData?._id, data, props.token);
-      if (response) {
-        navigation.navigate(RouteNames.providerBottomTabs)
-      }        
+      else{
+        ToastAlert({text1: "Error, Invalid Credientials", type: 'error'});
+      }
+
+      // return
+
+      // let data = {
+      //   payment: true
+      // }
+      // let response = await props.CONTINUE_PAYMENT(props?.profileData?._id, data, props.token);
+      // if (response) {
+      //   navigation.navigate(RouteNames.providerBottomTabs)
+      // }        
 
       };
 

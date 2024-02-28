@@ -74,7 +74,7 @@ const PaymentDone = props => {
   useEffect(() => {
     const backAction = () => {
       navigation.goBack();
-      navigation.closeDrawer();
+      // navigation.closeDrawer();
       return true;
     };
 
@@ -296,6 +296,40 @@ const PaymentDone = props => {
           <View style={{marginHorizontal: 15, marginTop: 5}}>
             <Text style={styles.newCardHeading}>Add new card</Text>
 
+            <InputField
+              maxLen={19}
+              height={55}
+              editable={false}
+              placeholderTextColor={theme.darkgrey}
+              placeholder="Card holder name"
+              onChangeText={handleSetName}
+              icon={<Octicons name="credit-card" size={22} color="black" />}
+              value={name}
+              mask={[
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+              ]}
+              keyboardType={'default'}
+            />
+
+
             <InputFieldMask
               maxLen={19}
               height={55}
@@ -328,37 +362,6 @@ const PaymentDone = props => {
               keyboardType={'numeric'}
             />
 
-            <InputFieldMask
-              maxLen={19}
-              height={55}
-              placeholderTextColor={theme.darkgrey}
-              placeholder="Card holder name"
-              onChangeText={handleSetName}
-              icon={<Octicons name="credit-card" size={22} color="black" />}
-              value={name}
-              mask={[
-                /\d/,
-                /\d/,
-                /\d/,
-                /\d/,
-                '-',
-                /\d/,
-                /\d/,
-                /\d/,
-                /\d/,
-                '-',
-                /\d/,
-                /\d/,
-                /\d/,
-                /\d/,
-                '-',
-                /\d/,
-                /\d/,
-                /\d/,
-                /\d/,
-              ]}
-              keyboardType={'numeric'}
-            />
 
             <View style={{flexDirection: 'row'}}>
               <View style={{width: '48%', marginRight: '3%'}}>
@@ -595,6 +598,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProp = state => ({
   userCards: state?.AuthReducer?.cards,
+  profileData: state.AuthReducer.profileData,
 });
 
 const mapDispatchToProp = {};

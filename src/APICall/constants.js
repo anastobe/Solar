@@ -2,6 +2,6 @@
 
 // const BASE_URL = 'http://localhost:8000/api/user/';
 
-const BASE_URL = 'http://192.168.0.111:8000/api/user/';
+const BASE_URL = 'http://192.168.0.119:8000/api/user/';
 
 export {BASE_URL};

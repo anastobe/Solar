@@ -47,6 +47,18 @@ const HeaderHomePage = ({...props}) => {
               justifyContent: 'space-between',
             }}>
 
+          {props?.showDrawerIcon ? 
+            <TouchableOpacity
+                style={{height: 25, width: 25}}
+                activeOpacity={0.9}
+                onPress={() => navigation.openDrawer() }>
+              <Octicons 
+                name={"list-unordered"} 
+                size={30} 
+                color={theme.white} 
+              />
+          </TouchableOpacity>                        
+          :
           <TouchableOpacity
               style={{height: 25, width: 25}}
               activeOpacity={0.9}
@@ -56,7 +68,7 @@ const HeaderHomePage = ({...props}) => {
               size={30} 
               color={theme.white} 
             />
-            </TouchableOpacity>
+            </TouchableOpacity>}
 
           </View>
         </View>

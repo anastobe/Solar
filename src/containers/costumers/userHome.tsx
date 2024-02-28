@@ -31,7 +31,7 @@ const UserHome = props => {
     const Focus= useIsFocused()
 
     useEffect(() => {
-      // GetFamousVen();      
+      // GetFamousVen();   
       VendorsList();
     }, [Focus]);
   
@@ -116,6 +116,7 @@ const UserHome = props => {
       <HeaderHomePage
         routeName={RouteNames.addJobStack}
         nav={navigation}
+        showDrawerIcon={true}
         showBottomHomePageContent={true}
         height={130}
         loader={false}

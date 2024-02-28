@@ -16,6 +16,7 @@ const InputFieldMask = props => {
       <MaskInput
         mask={props.mask}
         maxLength={props.maxLen}
+        editable={props.editable}
         placeholderTextColor={props.placeholderTextColor}
         style={[styles.input,{ height: props.height }]}
         {...props}

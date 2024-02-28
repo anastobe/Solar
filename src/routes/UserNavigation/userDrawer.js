@@ -28,10 +28,10 @@ const UserDrawer = props => {
         <Drawer.Screen
           name={RouteNames.userHome}
           component={UserHome}
-        //   options={{
-        //     title: '',
-        //     drawerItemStyle: {display: 'none'},
-        //   }}
+          options={{
+            title: '',
+            drawerItemStyle: {display: 'none'},
+          }}
         />
   
         <Drawer.Screen

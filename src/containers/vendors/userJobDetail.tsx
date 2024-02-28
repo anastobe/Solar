@@ -15,7 +15,7 @@ const UserJobDetail = ({...props}) => {
     const {List} = props?.route?.params?.data
 
     
-    function Message() {
+    function Message() {     
 
       if (props.profileData?.payment) {
         navigation.navigate(RouteNames.chatTabStack)
