@@ -203,7 +203,16 @@ function onClick() {
 function renderBtn() {
 
   function Price() {
-  if (appliances.totalWatt < 200) {
+  if (appliances.totalWatt < 10) {
+      return {
+        price: 0,
+        battery: 0,
+        pannel: 0,
+        extraExpense: 0,
+        days: 0
+      }
+    }  
+  else if (appliances.totalWatt < 200) {
     return {
       price: 15000,
       battery: 100,
@@ -212,7 +221,7 @@ function renderBtn() {
       days: 1
     }
   }
-  else if (appliances.totalWatt < 600) {
+  else if (appliances.totalWatt < 500) {
     return {
       price: 30000,
       battery: 200,
@@ -221,7 +230,7 @@ function renderBtn() {
       days: 1
     }
   }
-  else if (appliances.totalWatt < 1000) {
+  else if (appliances.totalWatt < 800) {
     return {
       price: 50000,
       battery: 200,
@@ -230,7 +239,7 @@ function renderBtn() {
       days: 1
     }
   }
-  else if (appliances.totalWatt < 1400) {
+  else if (appliances.totalWatt < 1100) {
     return {
       price: 70000,
       battery: 200,
@@ -239,7 +248,7 @@ function renderBtn() {
       days: 1
     }
   }
-  else if (appliances.totalWatt < 1800) {
+  else if (appliances.totalWatt < 1400) {
     return {
       price: 90000,
       battery: 200,
@@ -248,7 +257,7 @@ function renderBtn() {
       days: 2
     }
   }
-  else if (appliances.totalWatt < 2200) {
+  else if (appliances.totalWatt < 1700) {
     return {
       price: 110000,
       battery: 200,
@@ -257,7 +266,7 @@ function renderBtn() {
       days: 2
     }
   }
-  else if (appliances.totalWatt < 2600) {
+  else if (appliances.totalWatt < 2000) {
     return {
       price: 130000,
       battery: 200,
@@ -266,7 +275,7 @@ function renderBtn() {
       days: 2
     }
   }
-  else if (appliances.totalWatt < 3000) {
+  else if (appliances.totalWatt < 2300) {
     return {
       price: 150000,
       battery: 200,
@@ -275,7 +284,7 @@ function renderBtn() {
       days: 2
     }
   }
-  else if (appliances.totalWatt < 3500) {
+  else if (appliances.totalWatt < 2600) {
     return {
       price: 175000,
       battery: 200,
@@ -284,7 +293,7 @@ function renderBtn() {
       days: 2
     }
   }
-  else if (appliances.totalWatt < 4000) {
+  else if (appliances.totalWatt < 2900) {
     return {
       price: 200000,
       battery: 200,
@@ -293,7 +302,7 @@ function renderBtn() {
       days: 2
     }
   }
-  else if (appliances.totalWatt < 4500) {
+  else if (appliances.totalWatt < 3200) {
     return {
       price: 225000,
       battery: 200,
@@ -302,7 +311,7 @@ function renderBtn() {
       days: 3
     }
   }
-  else if (appliances.totalWatt < 5000) {
+  else if (appliances.totalWatt < 3500) {
     return {
       price: 250000,
       battery: 200,
@@ -311,7 +320,7 @@ function renderBtn() {
       days: 3
     }
   }
-  else if (appliances.totalWatt < 5500) {
+  else if (appliances.totalWatt < 3800) {
     return {
       price: 300000,
       battery: 200,
@@ -320,7 +329,178 @@ function renderBtn() {
       days: 3
     }
   }
-  else if (appliances.totalWatt < 6000) {
+  else if (appliances.totalWatt < 4100) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 4400) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 4700) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 5000) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 5300) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 5600) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 5900) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 6200) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 6500) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 6800) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 7100) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 7400) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 7700) {    
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 8000) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 8300) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 8600) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 8900) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 9200) {
+    return {
+      price: 350000,
+      battery: 200,
+      pannel: 10,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 9500) {
+    return {
+      price: 300000,
+      battery: 200,
+      pannel: 9,
+      extraExpense: 8,
+      days: 3
+    }
+  }
+  else if (appliances.totalWatt < 9800) {
     return {
       price: 350000,
       battery: 200,
@@ -330,14 +510,13 @@ function renderBtn() {
     }
   }
 
-
   else  {
     return {
-      price: 0,
-      battery: 0,
-      pannel: 0,
-      extraExpense: 0,
-      days: 0 
+      price: "Not Available",
+      battery: "#",
+      pannel: "#",
+      extraExpense: "#",
+      days: "#" 
     }
   }
 
@@ -348,12 +527,38 @@ function renderBtn() {
   
 
   return (
-    <View style={{ marginBottom: 20, backgroundColor: theme.white, height: 100 }} >
-      <Text>price: {Price().price}</Text>
-      <Text>Battery: {Price().battery}</Text>
-      <Text>Panels: {Price().pannel}</Text>
-      <Text>Extra Expense: {Price().extraExpense}</Text>
-      <Text>Approx Days: {Price().days}</Text>
+    <View style={{ backgroundColor: theme.inputPlaceholder, height: 170, alignItems: "center", borderTopLeftRadius: 20, borderTopRightRadius: 20  }} >
+
+      <View style={{ flexDirection: "row", width: '100%', justifyContent: "center", marginTop: 10 }} >
+        <View style={{ backgroundColor: theme.purple, marginTop: 20, borderRadius: 20 }} >
+          <Text style={{ color: theme.white, fontSize: 20, marginHorizontal: 20, marginVertical: 10 }} >PRICE: {Price()?.price}</Text>
+        </View>
+
+        <View style={{ position: "absolute", right: 10,  width: 60,  marginTop: 5}} >
+          <Text style={{ color: theme.white, backgroundColor: theme.purple, borderRadius: 20,  width: 60, textAlign: "center", paddingVertical: 5 }} >Days: {Price()?.days}</Text>
+        </View>
+      </View>
+
+      <View style={{ flexDirection: "row", justifyContent: "space-around", width: '100%', marginTop: 20 }} >
+
+        <View style={{ alignItems: "center", justifyContent: "center"  ,backgroundColor: theme.purple, width: 90, borderRadius: 20,height: 50 }} >
+          <Text style={{  color: theme.white }} >BATTERY</Text>
+          <Text style={{  color: theme.white }} >{Price()?.battery}</Text>
+        </View>
+
+        <View style={{ alignItems: "center", justifyContent: "center"  ,backgroundColor: theme.purple, width: 90, borderRadius: 20,height: 50 }} >
+          <Text style={{  color: theme.white }} >PANELS</Text>
+          <Text style={{  color: theme.white }} >{Price()?.pannel}</Text>
+        </View>
+
+        <View style={{ alignItems: "center", justifyContent: "center"  ,backgroundColor: theme.purple, width: 90, borderRadius: 20,height: 50 }} >
+          <Text style={{  color: theme.white }} >EXTRA EXP</Text>
+          <Text style={{  color: theme.white }} >{Price()?.extraExpense}</Text>
+        </View>
+  
+      </View>
+
+
     </View>
   );
 }

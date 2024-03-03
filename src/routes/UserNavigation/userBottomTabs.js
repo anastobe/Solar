@@ -8,7 +8,7 @@ import UserDrawer from './userDrawer';
 import BottomTab from '@/components/bottomTab';
 import Notification from '@/containers/generalScreens/notification';
 import Profile from '@/containers/generalScreens/profile';
-import Chat from '@/containers/generalScreens/chat';
+// import Chat from '@/containers/generalScreens/chat';
 import Chattinguser from '@/containers/generalScreens/chatScreens/chattinguser';
 import ShowBigImage from '@/containers/generalScreens/chatScreens/showBigImage';
 import PdfView from '@/containers/generalScreens/chatScreens/pdfView';
@@ -20,6 +20,8 @@ import AddLoads from '@/containers/generalScreens/addJob/addLoads';
 import GetEstimatePrice from '@/containers/generalScreens/addJob/getEstimatePrice';
 import GetRequirementsDetail from '@/containers/generalScreens/addJob/getRequirementsDetail';
 import JobDetailAndPayment from '@/containers/costumers/jobDetailAndPayment';
+import ChatScreen from '@/containers/generalScreens/Message/ChatScreen';
+import Chat from '@/containers/generalScreens/Message/Chat';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -28,6 +30,8 @@ function homeTabStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name={RouteNames.userDrawer} component={UserDrawer} />
+      {/* <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
 
     </Stack.Navigator>
   );
@@ -38,6 +42,8 @@ function AddJobStack() {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name={RouteNames.addJob} component={AddJob} />
 
+      {/* <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
       <Stack.Screen options={{headerShown: false}} name={RouteNames.getRequirementsDetail} component={GetRequirementsDetail} />
       <Stack.Screen name={RouteNames.addLoads} component={AddLoads} />
       <Stack.Screen name={RouteNames.getEstimatePrice} component={GetEstimatePrice} />
@@ -51,23 +57,9 @@ function ChatTabStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
 
-      <Stack.Screen name='Chatflatlist' component={Personlistscreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} />
 
-        {/*        <Stack.Screen name='Contract' component={Contract} options={{ headerShown: false }} />
-            <Stack.Screen name='Contractsubmitted' component={Contractsubmitted} options={{ headerShown: false }} />
-            <Stack.Screen name='Newcardadd' component={Newcardadd} options={{ headerShown: false }} />
-            <Stack.Screen name='Reqeustreason' component={Reqeustreason} options={{ headerShown: false }} />
-            <Stack.Screen name='Userpayment' component={Userpayment} options={{ headerShown: false }} />
-            <Stack.Screen name='Sharelocation' component={Sharelocation} options={{ headerShown: false }} />
-            <Stack.Screen name='Homerunningcontact' component={Homerunningcontact} options={{ headerShown: false }} />
-            <Stack.Screen name='Influencerpaypal' component={Influencerpaypal} options={{ headerShown: false }} />
-            <Stack.Screen name='Joboffersent' component={Joboffersent} options={{ headerShown: false }} />
-            <Stack.Screen name='Messagebox' component={Messagebox} options={{ headerShown: false }} />
-            <Stack.Screen name='Refundsubmitted' component={Refundsubmitted} options={{ headerShown: false }} />
-            <Stack.Screen name='Paymentcard' component={Paymentcard} options={{ headerShown: false }} />
-            <Stack.Screen name='Influencerpay' component={Influencerpay} options={{ headerShown: false }} />
-            <Stack.Screen name='pdfView' component={PdfView} options={{ headerShown: false }} />
-            <Stack.Screen name='showBigImage' component={ShowBigImage} options={{ headerShown: false }} /> . */}
 
     </Stack.Navigator>
   );
@@ -105,20 +97,6 @@ const UserBottomTabs = () => {
             ),
           }}
       />
-      {/* <Tab.Screen name="NotificationTab" component={NotificationTab} 
-        options={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarIcon: ({focused}) => (
-            <BottomTab
-            txt={'Updates'}
-            img={"bell"}
-            focusImg={"bell"}
-            focus={focused}
-            />
-        ),
-        }}
-        /> */}
       <Tab.Screen name={RouteNames.addJobStack} component={AddJobStack} 
         options={{
             headerShown: false,

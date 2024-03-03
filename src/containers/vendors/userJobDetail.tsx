@@ -6,25 +6,50 @@ import SettingHeader from '@/components/settingStackHeader'
 import { FONT_FAMILY, RouteNames } from '@/constants'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
 
 const UserJobDetail = ({...props}) => {
 
     const navigation = useNavigation();
-    const {List} = props?.route?.params?.data
-
+    const {List, _id, name, firebase_id} = props?.route?.params?.data   
+      const{ payment } = props?.profileData
     
-    function Message() {     
+    console.log("===>",props?.route?.params);
 
-      if (props.profileData?.payment) {
-        navigation.navigate(RouteNames.chatTabStack)
+
+    //provider left
+  const Message = () => {
+
+    if (payment) {
+      if (_id) {  //login hone k baad ya api se ara hoga
+        navigation.navigate('ChatScreen', {
+          itemData: {
+            fullName: name,
+            firebase_id: firebase_id,
+            profile: "props?.base_url+"/"+cardInfo?.user?.profile_image",
+            device_token: "xyz token",
+          }
+        })
       }
-      else{
-        navigation.navigate(RouteNames.paymentDone)
+      else {
+        alert({ text1: 'Something Wrong!' })
       }
-      
     }
+    else{
+
+      Alert.alert('Alert', 'Please done Your Payment', [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'Pay Now', onPress: () => { navigation.navigate(RouteNames.paymentDone) }},
+      ]);
+
+    }
+      
+  }
 
   return (
     <SafeScrollView screenCol={theme.white} isDarkMode barCol={theme.purple}>
@@ -38,7 +63,7 @@ const UserJobDetail = ({...props}) => {
 
         <View style={{ alignItems: "flex-end", margin: 15 }} >
           <TouchableOpacity onPress={()=>{ Message() }} style={{ width: 150, height: 50, backgroundColor: theme.darkgrey, borderRadius: 10, justifyContent: 'center', alignItems: "center" }} >
-            <Text style={{ color: theme.white, fontSize: 15, fontFamily: FONT_FAMILY.MontserratSemiBold }} >Send Message ></Text>  
+            <Text style={{ color: theme.white, fontSize: 15, fontFamily: FONT_FAMILY.MontserratSemiBold }} >Send Message > </Text>  
           </TouchableOpacity>
         </View>
 

@@ -17,6 +17,8 @@ import Notification from '@/containers/generalScreens/notification';
 import FamousVendors from '@/containers/generalScreens/famousVendors';
 import CalculateExpense from '@/containers/generalScreens/calculateExpense';
 import Login from '@/containers/auth/login';
+import Chat from '@/containers/generalScreens/Message/Chat';
+import ChatScreen from '@/containers/generalScreens/Message/ChatScreen';
 
 
 const UserRoutes = () => {
@@ -67,6 +69,19 @@ const UserRoutes = () => {
         options={{headerShown: false}}
       />
 
+
+     {/* firebase chat module  */}
+     <Stack.Screen 
+       name="Chat" 
+       component={Chat} 
+       options={{headerShown: false}} 
+      />
+      
+      <Stack.Screen 
+        name="ChatScreen" 
+        component={ChatScreen} 
+        options={{headerShown: false}} 
+      />
 
       {/* chat module  */}
       <Stack.Screen

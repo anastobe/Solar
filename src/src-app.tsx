@@ -13,14 +13,20 @@ import {PersistGate} from 'redux-persist/integration/react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FlashMessage from 'react-native-flash-message';
 import {Toast} from 'react-native-toast-message/lib/src/Toast';
+import auth, { firebase } from '@react-native-firebase/auth';
 
 const App = () => {
   // const [handleNav, sethandleNav] = useState('');
+  
+  const UID = auth().currentUser.uid
 
   useEffect(() => {
     SplashScreen.hide();
     // redirect();
   }, []);
+
+  console.log("=====>",UID);
+  
 
   // async function redirect() {
   //   try {

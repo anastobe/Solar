@@ -11,6 +11,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {Metrics} from '@/assets/metrics/metrics';
+import auth, {firebase} from '@react-native-firebase/auth';
 import theme from '@/assets/styles/theme';
 import SafeScrollView from '@/components/safeScrollView';
 import SettingHeader from '@/components/settingStackHeader';
@@ -128,6 +129,7 @@ const GetRequirementsDetail = ({...props}) => {
     } else {
       let data = {
         userImg: 'userImg',
+        firebase_id: auth().currentUser?.uid,
         name: isState.name,
         title: isState.title,
         description: isState.description,
@@ -175,6 +177,7 @@ const GetRequirementsDetail = ({...props}) => {
 
     let data = {
       userImg: 'userImg',
+      firebase_id: auth().currentUser?.uid,
       name: isState.name,
       title: isState.title,
       description: isState.description,

@@ -16,14 +16,19 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import { useNavigation } from "@react-navigation/native";
 import { RegisterApi } from "@/Redux/Action/AuthActions/authActions";
 import { connect } from "react-redux";
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import SimpleLoader from "@/components/simpleLoader";
 
 const Signup  = props => {
 
     const navigation = useNavigation();
     const [isChecked, setIsChecked] = useState(false);
+    const [load, setload] = useState(false);
     const [username, setUserName] = useState('anas');
     const [email, setEmail] = useState('anas@gmail.com');
     const [password, setPassword] = useState('AsgL9751-');
+    const [firebase_id, setfirebase_id] = useState('');
     const [cnfrm_password, setcnfrm_Password] = useState('AsgL9751-');
     const [usertype, setusertype] = useState('');
     const [isInvalidUsername, setIsInvalidUsername] = useState('');
@@ -32,7 +37,25 @@ const Signup  = props => {
     const [isInvalidCnfrmPassword, setIsInvalidCnfrmPassword] = useState('');
     const [hide, setHide] = useState(true);
     const [hide2, setHide2] = useState(true);
-    const [load, setLoader] = useState(false);
+
+    async function Api_SignUp(data) {
+
+    let response = await props.RegisterApi(data,navigation);
+
+    if (response) {
+        setEmail('')
+        setUserName('')
+        setPassword('')
+        setcnfrm_Password('')
+        setload(false)
+        navigation.navigate(RouteNames.login);
+      } else {
+        
+        setload(false)
+      }
+
+       
+    }
 
     const nextButton =async () => {
         const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -125,7 +148,8 @@ const Signup  = props => {
         });
         return
       }   
-        else {          
+        else {   
+          setload(true)       
             let data = {
               name: username,
               email: email,
@@ -133,25 +157,70 @@ const Signup  = props => {
               password_confirmation: cnfrm_password,
               tc: true,
               type: usertype,
-              payment: true,
+              payment: false,
               profileImage: "String"
             };
-            
-            let response = await props.RegisterApi(data,navigation);
 
-            if (response) {
-                setEmail('')
-                setUserName('')
-                setPassword('')
-                setcnfrm_Password('')
-                navigation.navigate(RouteNames.login);
-                setLoader(false);
-              } else {
-                setLoader(false);
+            auth()
+            .createUserWithEmailAndPassword(data.email, password)
+            .then((res) => {
+              const UID = auth().currentUser.uid;
+              setfirebase_id(UID)
+              firestore()
+                .collection('Users')
+                .doc(`${UID}`)
+                .set({
+                  type: 'basic',
+                  full_name: username,
+                  email: email,
+                  device_token: 'abc token',
+                  profilePic: "isState.pic",
+                  uid: UID,
+                  status: true,
+                  room: ""
+                })
+                .then(() => {
+                  Api_SignUp(data)
+                }).catch(error => {
+                  console.log("error in Api_SignUp",error)
+                })
+              })
+            .catch(error => {
+              if (error.code === 'auth/email-already-in-use') {
+                showMessage({
+                  message: 'That email address is already in use!',
+                  type: "default",
+                  backgroundColor: "#0760F0",
+                  color: "white",
+                  statusBarHeight : StatusBar.currentHeight
+              });
               }
+              else if (error.code === 'auth/invalid-email') {
+                showMessage({
+                  message:  'That email address is invalid!',
+                  type: "default",
+                  backgroundColor: "#0760F0",
+                  color: "white",
+                  statusBarHeight : StatusBar.currentHeight
+              });
+              }
+              else if (error.code === 'auth/network-request-failed') {
+                showMessage({
+                  message:  'The email address is already in use by another account.',
+                  type: "default",
+                  backgroundColor: "#0760F0",
+                  color: "white",
+                  statusBarHeight : StatusBar.currentHeight
+              });
+            }
+            
+            setload(false)         
+              return
+            })
+            
+            }
 
         }
-    }
    
 
     const handleSetUsername = (inputName) => {
@@ -352,6 +421,7 @@ const Signup  = props => {
             </View>
           </ScrollView>
         </SafeAreaView>
+        <SimpleLoader loader={load}  />
       </View>
     );
 }

@@ -22,11 +22,13 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import HeaderHomePage from '@/components/headerHomePage';
 import { GetFamousVendors, GetProfileData, GetUserList } from '@/Redux/Action/AuthActions/authActions';
 import { connect } from 'react-redux';
+import { RefreshControl } from 'react-native';
 
 const VendorsHome = props => {
 
   const navigation = useNavigation()
   const Focus= useIsFocused()
+  const [pageLoader, setPageLoader] = useState(false);
 
     useEffect(() => {   
       UserJobList();
@@ -94,10 +96,25 @@ const VendorsHome = props => {
           keyExtractor={item => item.id}
           data={props?.userJobList}
           renderItem={renderItem}
+          // refreshing={false}
+          // onRefresh={()=>{ props.GetUserList(props?.token) }}
+          // onEndReached={()=>{console.log("load more data")}}
+          // onEndReachedThreshold={0}
         />
       );
     }
 
+    async function OnActivityRefresh() {
+      setPageLoader(true);
+
+      let res = await props.GetUserList(props?.token);
+      if (res) {
+        setPageLoader(false);
+      } else {
+        setPageLoader(false);
+      }
+
+    }
 
   return (
     <SafeScrollView screenCol={theme.white} isDarkMode barCol={theme.purple}>
@@ -111,7 +128,14 @@ const VendorsHome = props => {
         loader={false}
       />
 
-      <ScrollView>
+      <ScrollView 
+          refreshControl={
+            <RefreshControl
+              refreshing={pageLoader}
+              onRefresh={OnActivityRefresh}
+            />
+          }
+        >
       {renderListHeader("User List")}
       {PostItems()}
       

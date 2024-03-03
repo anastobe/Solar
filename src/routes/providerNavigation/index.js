@@ -18,6 +18,8 @@ import Notification from '@/containers/generalScreens/notification';
 import FamousVendors from '@/containers/generalScreens/famousVendors';
 import ProceedPayment from '@/containers/generalScreens/ProceedPayment';
 import Login from '@/containers/auth/login';
+import Chat from '@/containers/generalScreens/Message/Chat';
+import ChatScreen from '@/containers/generalScreens/Message/ChatScreen';
 
 const ProviderRoutes = () => {
   const Stack = createNativeStackNavigator();
@@ -73,6 +75,17 @@ const ProviderRoutes = () => {
       
 
       {/* chat module  */}
+      <Stack.Screen 
+       name="Chat" 
+       component={Chat} 
+       options={{headerShown: false}} 
+      />
+      
+      <Stack.Screen 
+        name="ChatScreen" 
+        component={ChatScreen} 
+        options={{headerShown: false}} 
+      />
       <Stack.Screen
         name="Userchat"
         component={Chattinguser}

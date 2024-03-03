@@ -29,6 +29,8 @@ import SafeScrollView from '@/components/safeScrollView';
 import {general_style} from '@/assets/styles/generalStyle';
 import PasswordField from '@/components/passwordField';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 // import {
 //   GoogleSignin,
@@ -65,7 +67,7 @@ const Login = props => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [hide, setHide] = useState(true);
-  const [inputEmail, setInputEmail] = useState('user1@gmail.com');
+  const [inputEmail, setInputEmail] = useState('anas1@gmail.com');
   const [password, setPassword] = useState('AsgL9751-');
   const [isInvalidEmail, setIsInvalidEmail] = useState('');
   const [isInvalidPassword, setIsInvalidPassword] = useState('');
@@ -147,7 +149,33 @@ const Login = props => {
 //     }
 //   };
 
-  const nextButton =async () => {
+async function ApiLogin(data) {
+
+  let response = await props.LoginApi(data);    
+
+  if (response?.data?.usertype == "provider") {
+    navigation.reset({
+      index: 0,
+      routes: [{name: RouteNames.providerBottomTabs}],
+    });
+    dispatch({type: ActionType.IS_LOGIN, payload: "provider"});
+    Alert.alert("you logged into SAAB project as a provider")
+    return
+  } else if (response?.data?.usertype == "user"){
+    navigation.reset({
+      index: 0,
+      routes: [{name: RouteNames.userBottomTabs}],
+    });
+    dispatch({type: ActionType.IS_LOGIN, payload: "user"});
+    Alert.alert("you logged into SAAB project as a user")
+    return
+  }
+  setload(false)
+  setInputEmail('');
+  setPassword('');
+}
+
+  const nextButton = () => {
 
     const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const regPassword =
@@ -175,35 +203,74 @@ const Login = props => {
       return;
     } else {
 
+      setload(true)   
       let data = {
         email: inputEmail,
         password: password,
       };
-      
-      let response = await props.LoginApi(data);
 
-      console.log("----===login==> ",response);      
+      auth().signInWithEmailAndPassword(inputEmail, password).then(async(res) => {   
+      await firestore()
+      .collection('Users')
+      .doc(res?.user?.uid)
+      .update({
+        status: true,
+        device_token: "xyz token"
+      })
+      .then(() => {
+        ApiLogin(data)
+      })
+      }).catch(error => {
 
-
-      if (response?.data?.usertype == "provider") {
-        navigation.reset({
-          index: 0,
-          routes: [{name: RouteNames.providerBottomTabs}],
+        if (error.code === 'auth/wrong-password') {
+          showMessage({
+            message:  "Enter correct password",
+            type: "default",
+            backgroundColor: "#0760F0",
+            color: "white",
+            statusBarHeight : StatusBar.currentHeight
         });
-        dispatch({type: ActionType.IS_LOGIN, payload: "provider"});
-        Alert.alert("you logged into SAAB project as a provider")
-        return
-      } else if (response?.data?.usertype == "user"){
-        navigation.reset({
-          index: 0,
-          routes: [{name: RouteNames.userBottomTabs}],
+        }
+        else if (error.code ===  'auth/invalid-credential') {
+          showMessage({
+            message:  "Invalid Credientials",
+            type: "default",
+            backgroundColor: "#0760F0",
+            color: "white",
+            statusBarHeight : StatusBar.currentHeight
         });
-        dispatch({type: ActionType.IS_LOGIN, payload: "user"});
-        Alert.alert("you logged into SAAB project as a user")
+        }
+        else if (error.code === 'auth/too-many-requests') {
+          showMessage({
+            message:   "Too Manu Request",
+            type: "default",
+            backgroundColor: "#0760F0",
+            color: "white",
+            statusBarHeight : StatusBar.currentHeight
+        });
+        }
+        else if (error.code === 'auth/invalid-email') {
+            showMessage({
+              message:  "Enter correct email address",
+              type: "default",
+              backgroundColor: "#0760F0",
+              color: "white",
+              statusBarHeight : StatusBar.currentHeight
+          });
+        }
+        else if (error.code === 'auth/user-not-found') {
+          showMessage({
+            message: "No User Found with these Credientials",
+            type: "default",
+            backgroundColor: "#0760F0",
+            color: "white",
+            statusBarHeight : StatusBar.currentHeight
+        });
+        }
+
+        setload(false)
         return
-      }
-      setInputEmail('');
-      setPassword('');
+      })
   
     }
   };
@@ -426,16 +493,8 @@ const Login = props => {
 
   return (
     <View style={{flex: 1, backgroundColor: theme.white}}>
-      {/* <ImageBackground
-        style={[
-          general_style.screen_container,
-          {backgroundColor: 'transparent', marginTop: StatusBar.currentHeight},
-        ]}
-        source={require('@/assets/images/patient.png')}
-        resizeMode="contain"> */}
         <ScrollView style={{flex: 1}}>{loginContent()}</ScrollView>
         <Loader handle={load} />
-      {/* </ImageBackground> */}
     </View>
   );
 }

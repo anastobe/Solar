@@ -5,17 +5,19 @@ import CreditCard from '@/components/CreditCard';
 import CustomButton from '@/components/CustomButtom';
 import { connect, useDispatch } from 'react-redux';
 import ToastAlert from '@/components/ToastAlert';
-import { CONTINUE_PAYMENT } from '@/Redux/Action/AuthActions/authActions';
+import { CONTINUE_PAYMENT, GetProfileData } from '@/Redux/Action/AuthActions/authActions';
 import { useNavigation } from '@react-navigation/native';
 import SettingHeader from '@/components/settingStackHeader';
 import ActionType from '@/Redux/Action/ActionType/actionType';
 import { RouteNames } from '@/constants';
+import SimpleLoader from '@/components/simpleLoader';
 
 var stripe = require('stripe-client')('pk_test_51O0AnUHvsswwFzcdOfhLuJmLfGUGoekoIgUdhOdZrNurhKoKjcSfWzmHbI4ytL7hE5hwTyMPOov2VRcOHaigvAji00Js1TZJzo');
 
 const ProceedPayment = ({ ...props }) => {
 
     const navigation = useNavigation();
+    const [load, setload] = useState(false);
     const [pageLoader, setPageLoader] = useState(false);
     const dispatch = useDispatch();
 
@@ -79,6 +81,18 @@ const ProceedPayment = ({ ...props }) => {
       console.log("=response=",token);
       if (token) {
         ToastAlert({text1: 'Transaction Successfull', type: 'success'});
+        setload(true)
+
+      let data = {
+        payment: true
+      }
+      let response = await props.CONTINUE_PAYMENT(props?.profileData?._id, data, props.token);
+      if (response) {
+        await props.GetProfileData(props.token);
+        setload(false)
+        navigation.navigate(RouteNames.providerBottomTabs)
+      }  
+
       }
       else{
         ToastAlert({text1: "Error, Invalid Credientials", type: 'error'});
@@ -129,7 +143,7 @@ const ProceedPayment = ({ ...props }) => {
                     }} heights={56} widths={'100%'} />
             </View>
 
-
+            <SimpleLoader loader={load}  />
         </SafeAreaView>
     )
 }
@@ -160,6 +174,7 @@ const mapStateToProp = state => ({
   
   const mapDispatchToProp = {
     CONTINUE_PAYMENT: CONTINUE_PAYMENT,
+    GetProfileData: GetProfileData
 
 
   };

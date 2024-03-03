@@ -207,9 +207,26 @@ const JobDetailAndPayment = (props) => {
       }
 
 
-    function Message() {
+//user
+  const Message = () => {
+    // return alert("user")
 
-        navigation.navigate(RouteNames.chatTabStack)      
+    if (data?._id) {  //login hone k baad ya api se ara hoga
+      navigation.navigate('ChatScreen', {
+        itemData: {
+          fullName: data.name,
+          firebase_id: data?.firebase_id,
+          profile: "props?.base_url+"/"+cardInfo?.user?.profile_image",
+          device_token: "xyz token",
+        }
+      })
+    }
+    else {
+      alert({ text1: 'Something Wrong!' })
+    }
+
+    // navigation.navigate(RouteNames.chatTabStack)      
+      
     }
 
   return (
