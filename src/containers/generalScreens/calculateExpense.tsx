@@ -190,7 +190,7 @@ const CalculateExpense = () => {
 function ListHeaderComponent() {
   return(
     <View style={{ alignItems: 'flex-end', marginTop: 10, marginRight: 0 }} >
-      <Text style={{ fontSize: 20 }} >Total Watt: {appliances.totalWatt}</Text>
+      <Text style={{ fontSize: 20, color: "#000" }} >Total Watt: {appliances.totalWatt}</Text>
     </View>
   )
 }
@@ -214,299 +214,299 @@ function renderBtn() {
     }  
   else if (appliances.totalWatt < 200) {
     return {
-      price: 15000,
-      battery: 100,
+      price: 30000 + 15000,
+      battery: 1,
       pannel: 1,
-      extraExpense: 8,
+      extraExpense: 15000,
       days: 1
     }
   }
   else if (appliances.totalWatt < 500) {
     return {
-      price: 30000,
-      battery: 200,
+      price: 30000 + 15000,
+      battery: 1,
       pannel: 1,
-      extraExpense: 8,
+      extraExpense: 15000,
       days: 1
     }
   }
   else if (appliances.totalWatt < 800) {
     return {
-      price: 50000,
-      battery: 200,
+      price: 60000 + 15000,
+      battery: 1,
       pannel: 2,
-      extraExpense: 8,
+      extraExpense: 15000,
       days: 1
     }
   }
   else if (appliances.totalWatt < 1100) {
     return {
-      price: 70000,
-      battery: 200,
+      price: 60000 + 30000,
+      battery: 2,
       pannel: 3,
-      extraExpense: 8,
+      extraExpense: 30000,
       days: 1
     }
   }
   else if (appliances.totalWatt < 1400) {
     return {
-      price: 90000,
-      battery: 200,
+      price: 90000 + 30000,
+      battery: 2,
       pannel: 3,
-      extraExpense: 8,
-      days: 2
+      extraExpense: 30000,
+      days: 1
     }
   }
   else if (appliances.totalWatt < 1700) {
     return {
-      price: 110000,
-      battery: 200,
+      price: 90000 + 30000,
+      battery: 2,
       pannel: 4,
-      extraExpense: 8,
-      days: 2
+      extraExpense: 30000,
+      days: 1
     }
   }
   else if (appliances.totalWatt < 2000) {
     return {
-      price: 130000,
-      battery: 200,
+      price: 120000 + 30000,
+      battery: 2,
       pannel: 4,
-      extraExpense: 8,
-      days: 2
+      extraExpense: 30000,
+      days: 1
     }
   }
   else if (appliances.totalWatt < 2300) {
     return {
-      price: 150000,
-      battery: 200,
+      price: 150000+45000,
+      battery: 3,
       pannel: 5,
-      extraExpense: 8,
+      extraExpense: 45000,
       days: 2
     }
   }
   else if (appliances.totalWatt < 2600) {
     return {
-      price: 175000,
-      battery: 200,
+      price: 180000+45000,
+      battery: 3,
       pannel: 6,
-      extraExpense: 8,
+      extraExpense: 45000,
       days: 2
     }
   }
   else if (appliances.totalWatt < 2900) {
     return {
-      price: 200000,
-      battery: 200,
-      pannel: 7,
-      extraExpense: 8,
+      price: 180000+45000,
+      battery: 3,
+      pannel: 6,
+      extraExpense: 45000,
       days: 2
     }
   }
   else if (appliances.totalWatt < 3200) {
     return {
-      price: 225000,
-      battery: 200,
-      pannel: 8,
-      extraExpense: 8,
-      days: 3
+      price: 180000+60000,
+      battery: 4,
+      pannel: 6,
+      extraExpense: 60000,
+      days: 2
     }
   }
   else if (appliances.totalWatt < 3500) {
     return {
-      price: 250000,
-      battery: 200,
-      pannel: 8,
-      extraExpense: 8,
-      days: 3
+      price: 180000+60000,
+      battery: 4,
+      pannel: 6,
+      extraExpense: 60000,
+      days: 2
     }
   }
   else if (appliances.totalWatt < 3800) {
     return {
-      price: 300000,
+      price: 210000+60000,
       battery: 200,
-      pannel: 9,
-      extraExpense: 8,
-      days: 3
+      pannel: 7,
+      extraExpense: 60000,
+      days: 2
     }
   }
   else if (appliances.totalWatt < 4100) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
+      price: 210000+75000,
+      battery: 5,
+      pannel: 7,
+      extraExpense: 75000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 4400) {
     return {
-      price: 300000,
-      battery: 200,
-      pannel: 9,
-      extraExpense: 8,
+      price: 240000+75000,
+      battery: 5,
+      pannel: 8,
+      extraExpense: 75000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 4700) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
+      price: 270000+75000,
+      battery: 5,
+      pannel: 9,
+      extraExpense: 75000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 5000) {
     return {
-      price: 300000,
-      battery: 200,
+      price: 270000+75000,
+      battery: 5,
       pannel: 9,
-      extraExpense: 8,
+      extraExpense: 75000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 5300) {
     return {
-      price: 350000,
-      battery: 200,
+      price: 300000+90000,
+      battery: 6,
       pannel: 10,
-      extraExpense: 8,
+      extraExpense: 90000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 5600) {
     return {
-      price: 300000,
-      battery: 200,
-      pannel: 9,
-      extraExpense: 8,
+      price: 300000+90000,
+      battery: 6,
+      pannel: 11,
+      extraExpense: 90000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 5900) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
+      price: 330000+90000,
+      battery: 6,
+      pannel: 11,
+      extraExpense: 90000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 6200) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
+      price: 330000+105000,
+      battery: 7,
+      pannel: 11,
+      extraExpense: 105000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 6500) {
     return {
-      price: 300000,
-      battery: 200,
-      pannel: 9,
-      extraExpense: 8,
+      price: 360000+105000,
+      battery: 7,
+      pannel: 12,
+      extraExpense: 105000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 6800) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
+      price: 360000+105000,
+      battery: 7,
+      pannel: 12,
+      extraExpense: 105000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 7100) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
+      price: 390000+120000,
+      battery: 8,
+      pannel: 13,
+      extraExpense: 120000,
       days: 3
     }
   }
   else if (appliances.totalWatt < 7400) {
     return {
-      price: 300000,
+      price: 390000+120000,
       battery: 200,
-      pannel: 9,
-      extraExpense: 8,
-      days: 3
+      pannel: 13,
+      extraExpense: 120000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 7700) {    
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
-      days: 3
+      price: 420000+120000,
+      battery: 8,
+      pannel: 14,
+      extraExpense: 120000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 8000) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
-      days: 3
+      price: 420000+120000,
+      battery: 8,
+      pannel: 14,
+      extraExpense: 120000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 8300) {
     return {
-      price: 300000,
-      battery: 200,
-      pannel: 9,
-      extraExpense: 8,
-      days: 3
+      price: 450000+135000,
+      battery: 9,
+      pannel:15,
+      extraExpense: 135000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 8600) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
-      days: 3
+      price: 450000+135000,
+      battery: 9,
+      pannel: 15,
+      extraExpense: 135000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 8900) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
-      days: 3
+      price: 480000+135000,
+      battery: 9,
+      pannel: 16,
+      extraExpense: 135000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 9200) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
-      days: 3
+      price: 510000+150000,
+      battery: 10,
+      pannel: 17,
+      extraExpense: 150000,
+      days: 4
     }
   }
   else if (appliances.totalWatt < 9500) {
     return {
-      price: 300000,
-      battery: 200,
-      pannel: 9,
-      extraExpense: 8,
-      days: 3
+      price: 540000+150000,
+      battery: 10,
+      pannel: 18,
+      extraExpense: 150000,
+      days: 5
     }
   }
   else if (appliances.totalWatt < 9800) {
     return {
-      price: 350000,
-      battery: 200,
-      pannel: 10,
-      extraExpense: 8,
-      days: 3
+      price: 540000+150000,
+      battery: 10,
+      pannel: 19,
+      extraExpense: 150000,
+      days: 5
     }
   }
 

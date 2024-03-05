@@ -18,14 +18,12 @@ import auth, { firebase } from '@react-native-firebase/auth';
 const App = () => {
   // const [handleNav, sethandleNav] = useState('');
   
-  const UID = auth().currentUser.uid
 
   useEffect(() => {
     SplashScreen.hide();
     // redirect();
   }, []);
 
-  console.log("=====>",UID);
   
 
   // async function redirect() {

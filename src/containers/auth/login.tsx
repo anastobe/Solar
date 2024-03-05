@@ -67,8 +67,8 @@ const Login = props => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [hide, setHide] = useState(true);
-  const [inputEmail, setInputEmail] = useState('anas1@gmail.com');
-  const [password, setPassword] = useState('AsgL9751-');
+  const [inputEmail, setInputEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isInvalidEmail, setIsInvalidEmail] = useState('');
   const [isInvalidPassword, setIsInvalidPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -151,7 +151,7 @@ const Login = props => {
 
 async function ApiLogin(data) {
 
-  let response = await props.LoginApi(data);    
+  let response = await props.LoginApi(data);     
 
   if (response?.data?.usertype == "provider") {
     navigation.reset({

@@ -25,11 +25,11 @@ const Signup  = props => {
     const navigation = useNavigation();
     const [isChecked, setIsChecked] = useState(false);
     const [load, setload] = useState(false);
-    const [username, setUserName] = useState('anas');
-    const [email, setEmail] = useState('anas@gmail.com');
-    const [password, setPassword] = useState('AsgL9751-');
+    const [username, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [firebase_id, setfirebase_id] = useState('');
-    const [cnfrm_password, setcnfrm_Password] = useState('AsgL9751-');
+    const [cnfrm_password, setcnfrm_Password] = useState('');
     const [usertype, setusertype] = useState('');
     const [isInvalidUsername, setIsInvalidUsername] = useState('');
     const [isInvalidEmail, setIsInvalidEmail] = useState('');
